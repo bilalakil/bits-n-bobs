@@ -4,7 +4,19 @@ namespace BitsNBobs
 {
     public class EnemySpawnController : MonoBehaviour
     {
+        public static EnemySpawnController I { get; private set; }
+        
         public float spawnDistance;
+
+        public void OnEnable()
+        {
+            I = this;
+        }
+
+        public void OnDisable()
+        {
+            I = null;
+        }
 
         public void Spawn(GameObject prefab)
         {

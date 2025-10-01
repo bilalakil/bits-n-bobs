@@ -7,18 +7,22 @@ namespace BitsNBobs
     {
         private static readonly Dictionary<string, object> Data = new()
         {
+            { "Enemy_Slime_Basic.DeathCoinAmount", 1 },
             { "Enemy_Slime_Basic.InitialMaxHealth", 15 },
             { "Enemy_Slime_Basic.MeleeAttack.BaseCooldownSeconds", 1f },
             { "Enemy_Slime_Basic.MeleeAttack.BaseDamage", 5 },
             { "Enemy_Slime_Basic.MovementSpeed", 2.5f },
+            { "Enemy_Slime_Fast.DeathCoinAmount", 2 },
             { "Enemy_Slime_Fast.InitialMaxHealth", 10 },
             { "Enemy_Slime_Fast.MeleeAttack.BaseCooldownSeconds", 1f },
             { "Enemy_Slime_Fast.MeleeAttack.BaseDamage", 5 },
             { "Enemy_Slime_Fast.MovementSpeed", 3.5f },
+            { "Enemy_Slime_MoreDamage.DeathCoinAmount", 2 },
             { "Enemy_Slime_MoreDamage.InitialMaxHealth", 15 },
             { "Enemy_Slime_MoreDamage.MeleeAttack.BaseCooldownSeconds", 1f },
             { "Enemy_Slime_MoreDamage.MeleeAttack.BaseDamage", 15 },
             { "Enemy_Slime_MoreDamage.MovementSpeed", 2f },
+            { "Enemy_Slime_Tanky.DeathCoinAmount", 2 },
             { "Enemy_Slime_Tanky.InitialMaxHealth", 35 },
             { "Enemy_Slime_Tanky.MeleeAttack.BaseCooldownSeconds", 1f },
             { "Enemy_Slime_Tanky.MeleeAttack.BaseDamage", 15 },

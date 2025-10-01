@@ -13,11 +13,16 @@ namespace BitsNBobs
         
         HealthController _healthController;
 
+        public void Awake()
+        {
+            _healthController = GetComponent<HealthController>();
+        }
+
         public void OnEnable()
         {
             s_all.Add(this);
 
-            if (TryGetComponent(out _healthController))
+            if (_healthController)
                 _healthController.OnDiedChanged += HandleDiedChanged;
         }
 
