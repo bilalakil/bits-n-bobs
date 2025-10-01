@@ -2,10 +2,11 @@
 
 namespace BitsNBobs
 {
-    public class InheritOwner : MonoBehaviour, ITargetContextProvider
+    public class InheritOwner : MonoBehaviour, IUnitProvider
     {
         public TargetResolver.Context Context => Owner.Context;
+        public Stats Stats => Owner.Stats;
 
-        public ITargetContextProvider Owner;
+        public IUnitProvider Owner;
     }
 }

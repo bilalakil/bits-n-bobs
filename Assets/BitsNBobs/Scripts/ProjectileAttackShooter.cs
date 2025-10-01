@@ -10,7 +10,7 @@ namespace BitsNBobs
         public string baseCooldownSecondsKey;
         public string baseTargetRangeKey;
 
-        ITargetContextProvider _myContextProvider;
+        IUnitProvider _myContextProvider;
         TargetResolver.Context _context;
         Transform _target;
         HealthController _targetHealthController;
@@ -18,7 +18,7 @@ namespace BitsNBobs
 
         public void Awake()
         {
-            _myContextProvider = gameObject.GetComponentInParent<ITargetContextProvider>();
+            _myContextProvider = gameObject.GetComponentInParent<IUnitProvider>();
             _context = _myContextProvider.Context;
         }
 

@@ -4,12 +4,13 @@ using UnityEngine;
 
 namespace BitsNBobs
 {
-    public class Enemy : MonoBehaviour, ITargetContextProvider
+    public class Enemy : MonoBehaviour, IUnitProvider
     {
         public static IReadOnlyCollection<Enemy> All => s_all;
         static readonly HashSet<Enemy> s_all = new HashSet<Enemy>();
 
         public TargetResolver.Context Context => new(transform, isPlayer: false);
+        public Stats Stats { get; } = null;
         
         HealthController _healthController;
 

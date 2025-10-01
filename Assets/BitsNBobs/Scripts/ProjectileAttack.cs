@@ -13,7 +13,7 @@ namespace BitsNBobs
 
         public void Awake()
         {
-            var contextProvider = GetComponentInParent<ITargetContextProvider>();
+            var contextProvider = GetComponentInParent<IUnitProvider>();
             _context = contextProvider.Context;
         }
 
