@@ -20,5 +20,12 @@ namespace BitsNBobs
 
             EnemySpawnController.I.Spawn(prefab);
         }
+
+        public static void TryBuyItem(int index)
+        {
+            if (index == -1 || !ShopController.I || !Player.I)
+                return;
+            ShopController.I.TryBuyItem(index);
+        }
     }
 }

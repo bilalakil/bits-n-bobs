@@ -4,16 +4,18 @@ namespace BitsNBobs
 {
     public class Stats
     {
+        public const string BASE_DAMAGE = "BaseDamage";
+        public const string MOVEMENT_SPEED = "MovementSpeed";
         internal static readonly IReadOnlyCollection<string> s_IntStatKeys = new HashSet<string>()
         {
-            "BaseDamage",
-            "InitialMaxHealth",
+            BASE_DAMAGE,
+            //"MaxHealth",
         };
         internal static readonly IReadOnlyCollection<string> s_FloatStatKeys = new HashSet<string>()
         {
-            "BaseTargetRange",
-            "MovementSpeed",
-            "ProjectileSpeed",
+            //"BaseTargetRange",
+            MOVEMENT_SPEED,
+            //"ProjectileSpeed",
         };
         
         readonly Dictionary<string, int> _intStats = new();

@@ -13,6 +13,7 @@ namespace BitsNBobs.Data
     public class ItemLibrary : ScriptableObject
     {
         [SerializeField] List<Item> items = new();
+        public IReadOnlyList<Item> Items => items;
 
         readonly Dictionary<string, Item> _itemsByKey = new();
         public IReadOnlyDictionary<string, Item> ItemsByKey => _itemsByKey;
