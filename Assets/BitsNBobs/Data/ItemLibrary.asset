@@ -14,5 +14,132 @@ MonoBehaviour:
   m_EditorClassIdentifier: BitsNBobs::BitsNBobs.Data.ItemLibrary
   items:
   - key: Item_T1Shoes
-    icon: {fileID: -5965752163781872154, guid: c165076f76594474b9fe1591925b5a4f, type: 3}
+    icon: {fileID: 21300000, guid: c165076f76594474b9fe1591925b5a4f, type: 3}
     cost: 1
+    intStatKeys: []
+    intStatValues: 
+    floatStatKeys:
+    - MovementSpeed
+    floatStatValues:
+    - 0.2
+  - key: Item_T2Shoes
+    icon: {fileID: 21300000, guid: 92c49ba192b75134293e80998508e74c, type: 3}
+    cost: 2
+    intStatKeys: []
+    intStatValues: 
+    floatStatKeys:
+    - MovementSpeed
+    floatStatValues:
+    - 0.4
+  - key: Item_T3Shoes
+    icon: {fileID: 21300000, guid: a743995c1730947479ef3af299880a47, type: 3}
+    cost: 4
+    intStatKeys: []
+    intStatValues: 
+    floatStatKeys:
+    - MovementSpeed
+    floatStatValues:
+    - 0.8
+  - key: Item_T4Shoes
+    icon: {fileID: 21300000, guid: 0669a37ef051cc9479f77c9608d739ac, type: 3}
+    cost: 8
+    intStatKeys: []
+    intStatValues: 
+    floatStatKeys:
+    - MovementSpeed
+    floatStatValues:
+    - 1.6
+  - key: Item_T5Shoes
+    icon: {fileID: 21300000, guid: 629b3754fac6ae94898724fd57c335ef, type: 3}
+    cost: 16
+    intStatKeys: []
+    intStatValues: 
+    floatStatKeys:
+    - MovementSpeed
+    floatStatValues:
+    - 3.2
+  - key: Item_T1Armour
+    icon: {fileID: 21300000, guid: bbb466a56fe7987428c6e24eb3d6250a, type: 3}
+    cost: 1
+    intStatKeys:
+    - InitialMaxHealth
+    intStatValues: 04000000
+    floatStatKeys: []
+    floatStatValues: []
+  - key: Item_T2Armour
+    icon: {fileID: 21300000, guid: 3c8f0fad89097434ba2a0386f17f2fc4, type: 3}
+    cost: 2
+    intStatKeys:
+    - InitialMaxHealth
+    intStatValues: 08000000
+    floatStatKeys: []
+    floatStatValues: []
+  - key: Item_T3Armour
+    icon: {fileID: 21300000, guid: 0302f4b078fde2a40a4d5ee2a0788f4c, type: 3}
+    cost: 4
+    intStatKeys:
+    - InitialMaxHealth
+    intStatValues: 10000000
+    floatStatKeys: []
+    floatStatValues: []
+  - key: Item_T4Armour
+    icon: {fileID: 21300000, guid: 7c5845069e74f7b4abb915441d5520cc, type: 3}
+    cost: 8
+    intStatKeys:
+    - InitialMaxHealth
+    intStatValues: 20000000
+    floatStatKeys: []
+    floatStatValues: []
+  - key: Item_T5Armour
+    icon: {fileID: 21300000, guid: 171b5025b9b63524aaef69d8ec4ca5ed, type: 3}
+    cost: 16
+    intStatKeys:
+    - InitialMaxHealth
+    intStatValues: 40000000
+    floatStatKeys: []
+    floatStatValues: []
+  - key: Item_T1Binoculars
+    icon: {fileID: 21300000, guid: e8d9c9a35a871124eb914491b648eded, type: 3}
+    cost: 1
+    intStatKeys: []
+    intStatValues: 
+    floatStatKeys:
+    - BaseTargetRange
+    floatStatValues:
+    - 0.2
+  - key: Item_T2Binoculars
+    icon: {fileID: 21300000, guid: 5275c979172053043afe41162bcf9ba5, type: 3}
+    cost: 2
+    intStatKeys: []
+    intStatValues: 
+    floatStatKeys:
+    - BaseTargetRange
+    floatStatValues:
+    - 0.4
+  - key: Item_T3Binoculars
+    icon: {fileID: 21300000, guid: 61e08511161201f48bfe9089cc63c404, type: 3}
+    cost: 4
+    intStatKeys: []
+    intStatValues: 
+    floatStatKeys:
+    - BaseTargetRange
+    floatStatValues:
+    - 0.8
+  - key: Item_T4Binoculars
+    icon: {fileID: 21300000, guid: 302a26fe494225448b4bb477fa3baf75, type: 3}
+    cost: 8
+    intStatKeys: []
+    intStatValues: 
+    floatStatKeys:
+    - BaseTargetRange
+    floatStatValues:
+    - 1.6
+  - key: Item_T5Binoculars
+    icon: {fileID: 21300000, guid: 1545e799e39596d4baa138a2bd43197e, type: 3}
+    cost: 16
+    intStatKeys: []
+    intStatValues: 
+    floatStatKeys:
+    - BaseTargetRange
+    floatStatValues:
+    - 3.2
