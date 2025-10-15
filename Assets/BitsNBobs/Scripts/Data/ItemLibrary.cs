@@ -32,8 +32,8 @@ namespace BitsNBobs.Data
 
         class RelevantConfigNames
         {
-            public HashSet<string> ItemNames = new();
-            public Dictionary<string, HashSet<string>> StatNamesByItemName = new();
+            public readonly HashSet<string> ItemNames = new();
+            public readonly Dictionary<string, HashSet<string>> StatNamesByItemName = new();
         }
         RelevantConfigNames _configNames;
 
@@ -55,7 +55,7 @@ namespace BitsNBobs.Data
             AssetDatabase.SaveAssets();
         }
 
-        static readonly Regex s_itemNameInConfigRe = new(@"^(Item_[^\.]+)\.(.+)");
+        static readonly Regex s_itemNameInConfigRe = new(@"^(Item_[^\.]+)\.(.+)$");
         static readonly Regex s_itemStatInConfigRemainderRe = new(@"^Stats\.([^.]+)$");
         static RelevantConfigNames ExtractConfigNames()
         {
@@ -106,12 +106,8 @@ namespace BitsNBobs.Data
 
         static bool TryGetCost(string itemName, out int cost)
         {
-            cost = 0;
-            var costKey = $"{itemName}.Cost";
-            if (!Config.DataKeys.Contains(costKey))
-                return false;
-            cost = Config.Get<int>(costKey);
-            return true;
+            var configKey = $"{itemName}.Cost";
+            return Config.TryGet(configKey, out cost);
         }
 
         static bool TryGetIcon(string itemName, out Sprite icon)

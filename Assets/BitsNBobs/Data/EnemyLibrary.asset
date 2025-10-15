@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27dd8d78eeb340ce9e4aefd80a21e592, type: 3}
+  m_Name: EnemyLibrary
+  m_EditorClassIdentifier: BitsNBobs::BitsNBobs.Data.EnemyLibrary
+  enemyPrefabs:
+  - {fileID: 6788510164101919230, guid: a6bd05fceec448244affbd1cf0a4ce28, type: 3}
+  - {fileID: 6788510164101919230, guid: ed8919663ecbe3249bf26163424942d0, type: 3}
+  - {fileID: 6788510164101919230, guid: 2e2cea3f065411b47ace7311cf22c3e7, type: 3}
+  - {fileID: 6788510164101919230, guid: f4d05550a6c74cf45a22158401b156a6, type: 3}
+  - {fileID: 6788510164101919230, guid: 64dd90cc6d1427b4ca03894ef9b8b7df, type: 3}

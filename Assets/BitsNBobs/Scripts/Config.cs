@@ -17,7 +17,7 @@ namespace BitsNBobs
             { "Enemy_Slime_Fast.InitialMaxHealth", 100 },
             { "Enemy_Slime_Fast.MeleeAttack.BaseCooldownSeconds", 1f },
             { "Enemy_Slime_Fast.MeleeAttack.BaseDamage", 10 },
-            { "Enemy_Slime_Fast.MovementSpeed", 5f },
+            { "Enemy_Slime_Fast.MovementSpeed", 4f },
 
             { "Enemy_Slime_MoreDamage.DeathCoinAmount", 2 },
             { "Enemy_Slime_MoreDamage.InitialMaxHealth", 100 },
@@ -30,9 +30,67 @@ namespace BitsNBobs
             { "Enemy_Slime_Tanky.MeleeAttack.BaseCooldownSeconds", 1f },
             { "Enemy_Slime_Tanky.MeleeAttack.BaseDamage", 10 },
             { "Enemy_Slime_Tanky.MovementSpeed", 2.5f },
-            
-            
-            
+
+
+            { "Enemy_Bat_Basic.DeathCoinAmount", 1 },
+            { "Enemy_Bat_Basic.InitialMaxHealth", 50 },
+            { "Enemy_Bat_Basic.MeleeAttack.BaseCooldownSeconds", .05f },
+            { "Enemy_Bat_Basic.MeleeAttack.BaseDamage", 1 },
+            { "Enemy_Bat_Basic.MovementSpeed", 6f },
+
+
+
+            { "Wave.1.TimeSeconds", 120 },
+
+            { "Wave.1.SpawnCounts.Enemy_Slime_Basic", 10 },
+            { "Wave.1.SpawnCounts.Enemy_Slime_Fast", 2 },
+            { "Wave.1.SpawnCounts.Enemy_Slime_MoreDamage", 2 },
+            { "Wave.1.SpawnCounts.Enemy_Slime_Tanky", 2 },
+
+            { "Wave.1.SpawnCounts.Enemy_Bat_Basic", 0 },
+
+
+            { "Wave.2.TimeSeconds", 240 },
+
+            { "Wave.2.SpawnCounts.Enemy_Slime_Basic", 0 },
+            { "Wave.2.SpawnCounts.Enemy_Slime_Fast", 0 },
+            { "Wave.2.SpawnCounts.Enemy_Slime_MoreDamage", 0 },
+            { "Wave.2.SpawnCounts.Enemy_Slime_Tanky", 0 },
+
+            { "Wave.2.SpawnCounts.Enemy_Bat_Basic", 40 },
+
+
+            { "Wave.3.TimeSeconds", 360 },
+
+            { "Wave.3.SpawnCounts.Enemy_Slime_Basic", 25 },
+            { "Wave.3.SpawnCounts.Enemy_Slime_Fast", 5 },
+            { "Wave.3.SpawnCounts.Enemy_Slime_MoreDamage", 20 },
+            { "Wave.3.SpawnCounts.Enemy_Slime_Tanky", 10 },
+
+            { "Wave.3.SpawnCounts.Enemy_Bat_Basic", 5 },
+
+
+            { "Wave.4.TimeSeconds", 480 },
+
+            { "Wave.4.SpawnCounts.Enemy_Slime_Basic", 0 },
+            { "Wave.4.SpawnCounts.Enemy_Slime_Fast", 10 },
+            { "Wave.4.SpawnCounts.Enemy_Slime_MoreDamage", 0 },
+            { "Wave.4.SpawnCounts.Enemy_Slime_Tanky", 30 },
+
+            { "Wave.4.SpawnCounts.Enemy_Bat_Basic", 100 },
+
+
+            { "Wave.5.TimeSeconds", 600 },
+
+            { "Wave.5.SpawnCounts.Enemy_Slime_Basic", 50 },
+            { "Wave.5.SpawnCounts.Enemy_Slime_Fast", 50 },
+            { "Wave.5.SpawnCounts.Enemy_Slime_MoreDamage", 50 },
+            { "Wave.5.SpawnCounts.Enemy_Slime_Tanky", 50 },
+
+            { "Wave.5.SpawnCounts.Enemy_Bat_Basic", 50 },
+
+
+
             { "Item_T1Shoes.Cost", 1 },
             { "Item_T1Shoes.Stats.MovementSpeed", .2f },
 
@@ -118,6 +176,22 @@ namespace BitsNBobs
             { "Item_T5Binoculars.Stats.BaseTargetRange", 3.2f },
 
 
+            { "Item_T1Gloves.Cost", 1 },
+            { "Item_T1Gloves.Stats.BaseCooldownSeconds", -.01f },
+
+            { "Item_T2Gloves.Cost", 2 },
+            { "Item_T2Gloves.Stats.BaseCooldownSeconds", -.02f },
+
+            { "Item_T3Gloves.Cost", 4 },
+            { "Item_T3Gloves.Stats.BaseCooldownSeconds", -.04f },
+
+            { "Item_T4Gloves.Cost", 8 },
+            { "Item_T4Gloves.Stats.BaseCooldownSeconds", -.08f },
+
+            { "Item_T5Gloves.Cost", 16 },
+            { "Item_T5Gloves.Stats.BaseCooldownSeconds", -.16f },
+
+
             { "Item_T6EyePiece.Cost", 32 },
             { "Item_T6EyePiece.Stats.BaseTargetRange", 12f },
             { "Item_T6EyePiece.Stats.BaseDamage", 16 },
@@ -132,9 +206,9 @@ namespace BitsNBobs
             { "Item_T6LightningShoes.Cost", 32 },
             { "Item_T6LightningShoes.Stats.MovementSpeed", 12f },
             { "Item_T6LightningShoes.Stats.BaseTargetRange", -4f },
-            
-            
-            
+
+
+
             { "Player.InitialMaxHealth", 100 },
             { "Player.MovementSpeed", 3.5f },
             { "Player.ProjectileAttack.BaseCooldownSeconds", 2f },
@@ -162,6 +236,13 @@ namespace BitsNBobs
 #else
             return (T)Data[key];
 #endif
+        }
+
+        public static bool TryGet<T>(string key, out T value)
+        {
+            var exists = Data.TryGetValue(key, out var valueObj);
+            value = exists ? (T)valueObj : default;
+            return exists;
         }
     }
 }

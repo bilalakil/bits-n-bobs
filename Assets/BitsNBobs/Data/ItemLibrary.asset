@@ -58,3 +58,43 @@ MonoBehaviour:
     - MovementSpeed
     floatStatValues:
     - 3.2
+  - key: Item_T1Crossbow
+    icon: {fileID: 21300000, guid: 8543d54683930804a9a15a5e7fafd58b, type: 3}
+    cost: 1
+    intStatKeys:
+    - BaseDamage
+    intStatValues: 02000000
+    floatStatKeys: []
+    floatStatValues: []
+  - key: Item_T2Crossbow
+    icon: {fileID: 21300000, guid: e7449078fa8827a4d80a83cd2fa01601, type: 3}
+    cost: 2
+    intStatKeys:
+    - BaseDamage
+    intStatValues: 04000000
+    floatStatKeys: []
+    floatStatValues: []
+  - key: Item_T3Crossbow
+    icon: {fileID: 21300000, guid: 4a27fd76b334d5147bf34491e8b4a8e6, type: 3}
+    cost: 4
+    intStatKeys:
+    - BaseDamage
+    intStatValues: 08000000
+    floatStatKeys: []
+    floatStatValues: []
+  - key: Item_T4Crossbow
+    icon: {fileID: 21300000, guid: 46aa8235cde344e498abbd5bfa05a475, type: 3}
+    cost: 8
+    intStatKeys:
+    - BaseDamage
+    intStatValues: 10000000
+    floatStatKeys: []
+    floatStatValues: []
+  - key: Item_T5Crossbow
+    icon: {fileID: 21300000, guid: 0ef66e4fa1b0a684d85e036ec5602a5b, type: 3}
+    cost: 16
+    intStatKeys:
+    - BaseDamage
+    intStatValues: 20000000
+    floatStatKeys: []
+    floatStatValues: []
