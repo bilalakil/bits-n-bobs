@@ -4,6 +4,7 @@ namespace BitsNBobs
 {
     public class Stats
     {
+        public const string ATTACK_SPEED = "AttackSpeed";
         public const string BASE_DAMAGE = "BaseDamage";
         public const string MOVEMENT_SPEED = "MovementSpeed";
         internal static readonly IReadOnlyCollection<string> s_IntStatKeys = new HashSet<string>()
@@ -13,6 +14,7 @@ namespace BitsNBobs
         };
         internal static readonly IReadOnlyCollection<string> s_FloatStatKeys = new HashSet<string>()
         {
+            ATTACK_SPEED,
             //"BaseTargetRange",
             MOVEMENT_SPEED,
             //"ProjectileSpeed",

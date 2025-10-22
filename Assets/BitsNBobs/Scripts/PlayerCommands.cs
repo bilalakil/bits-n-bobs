@@ -27,5 +27,12 @@ namespace BitsNBobs
                 return;
             ShopController.I.TryBuyItem(index);
         }
+
+        public static void TryRefreshShop()
+        {
+            if (!ShopController.I || !CoinController.I)
+                return;
+            ShopController.I.TryRefreshShop();
+        }
     }
 }

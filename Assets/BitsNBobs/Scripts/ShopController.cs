@@ -45,6 +45,18 @@ namespace BitsNBobs
             OnShopChanged?.Invoke();
         }
 
+        public void TryRefreshShop()
+        {
+            if (!CoinController.I)
+                return;
+            var cost = Config.Get<int>("Shop.RefreshCost");
+            if (CoinController.I.CoinAmount < cost)
+                return;
+            CoinController.I.CoinAmount -= cost;
+            RegenerateItems();
+            OnShopChanged?.Invoke();
+        }
+
         void RegenerateItems()
         {
             _shopItems.Clear();

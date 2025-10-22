@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace BitsNBobs
 {
@@ -7,33 +9,45 @@ namespace BitsNBobs
         public TargetResolver.Target targetType;
         public string baseCooldownSecondsKey;
         public string baseDamageKey;
-        
-        TargetResolver.Context _context;
+
+        IUnitProvider _contextProvider;
         Transform _target;
-        private float _nextActivationTime;
+        float _nextActivationTime;
         
 
         public void Awake()
         {
-            var contextProvider = GetComponentInParent<IUnitProvider>();
-            _context = contextProvider.Context;
+            _contextProvider = GetComponentInParent<IUnitProvider>();
         }
 
-        public void OnCollisionEnter2D(Collision2D collision)
+        public void OnCollisionEnter2D(Collision2D collision) => TryAttack(collision.transform);
+
+        public void OnCollisionStay2D(Collision2D collision) => TryAttack(collision.transform);
+
+        void TryAttack(Transform hitTarget)
         {
             if (Time.time < _nextActivationTime)
                 return;
 
-            var hitTarget = collision.transform;
             if (
-                !TargetResolver.IsValid(_context, targetType, hitTarget) ||
+                !TargetResolver.IsValid(_contextProvider.Context, targetType, hitTarget) ||
                 !hitTarget.TryGetComponent<HealthController>(out var targetHealthController)
             ) return;
             
-            var cooldown = Config.Get<float>(baseCooldownSecondsKey);
+            // TODO: Hook up damage...
             var damage = Config.Get<int>(baseDamageKey);
-            _nextActivationTime = Time.time + cooldown;
+            _nextActivationTime = GetNextActivationTime();
             targetHealthController.CurrentHealth -= damage;
+        }
+
+        float GetNextActivationTime()
+        {
+            // TODO: De-duplicate with ProjectileAttackShooter
+            var baseCooldown = Config.Get<float>(baseCooldownSecondsKey);
+            var attackSpeed = _contextProvider.Stats?.FloatStats.GetValueOrDefault(Stats.ATTACK_SPEED) ?? 0;
+            var attacksPerSecond = (1 / baseCooldown) * (1 + attackSpeed);
+            var cooldown = 1 / attacksPerSecond;
+            return Time.time + cooldown;
         }
     }
 }

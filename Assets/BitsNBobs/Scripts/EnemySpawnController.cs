@@ -22,7 +22,8 @@ namespace BitsNBobs
         {
             var spawnPosition = Random.insideUnitCircle.normalized * spawnDistance;
             // TODO: Pooling!
-            Instantiate(prefab, spawnPosition, Quaternion.identity);
+            Instantiate(prefab, transform.position + new Vector3(spawnPosition.x, spawnPosition.y, 0),
+                Quaternion.identity);
         }
     }
 }

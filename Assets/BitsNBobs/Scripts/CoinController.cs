@@ -33,5 +33,15 @@ namespace BitsNBobs
         {
             I = null;
         }
+
+#if UNITY_EDITOR
+        [ContextMenu("Grant 10000 Coins")]
+        public void Grant10000Coins()
+        {
+            if (!Application.isPlaying)
+                return;
+            CoinAmount += 10000;
+        }
+#endif
     }
 }

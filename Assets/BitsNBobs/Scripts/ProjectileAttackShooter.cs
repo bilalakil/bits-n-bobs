@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace BitsNBobs
@@ -10,16 +11,15 @@ namespace BitsNBobs
         public string baseCooldownSecondsKey;
         public string baseTargetRangeKey;
 
-        IUnitProvider _myContextProvider;
+        IUnitProvider _contextProvider;
         TargetResolver.Context _context;
         Transform _target;
-        HealthController _targetHealthController;
         float _nextActivationTime;
 
         public void Awake()
         {
-            _myContextProvider = gameObject.GetComponentInParent<IUnitProvider>();
-            _context = _myContextProvider.Context;
+            _contextProvider = gameObject.GetComponentInParent<IUnitProvider>();
+            _context = _contextProvider.Context;
         }
 
         public void Update()
@@ -31,7 +31,7 @@ namespace BitsNBobs
             if (!_target)
                 return;
 
-            if (!_target.TryGetComponent(out _targetHealthController))
+            if (!_target.TryGetComponent<HealthController>(out _))
             {
                 _target = null;
                 return;
@@ -42,10 +42,19 @@ namespace BitsNBobs
             var targetRange = Config.Get<float>(baseTargetRangeKey);
             if (Vector3.Distance(myPos, targetPos) > targetRange)
                 return;
-            var cooldown = Config.Get<float>(baseCooldownSecondsKey);
-            _nextActivationTime = Time.time + cooldown;
+            _nextActivationTime = GetNextActivationTime();
 
             SpawnProjectile(myPos, targetPos);
+        }
+
+        float GetNextActivationTime()
+        {
+            // TODO: De-duplicate with MeleeAttack
+            var baseCooldown = Config.Get<float>(baseCooldownSecondsKey);
+            var attackSpeed = _contextProvider.Stats?.FloatStats.GetValueOrDefault(Stats.ATTACK_SPEED) ?? 0;
+            var attacksPerSecond = (1 / baseCooldown) * (1 + attackSpeed);
+            var cooldown = 1 / attacksPerSecond;
+            return Time.time + cooldown;
         }
 
         void SpawnProjectile(Vector3 myPos, Vector3 targetPos)
@@ -56,7 +65,7 @@ namespace BitsNBobs
             projectileMovementController.MoveTowards(targetPos);
 
             if (projectileMovementController.TryGetComponent<InheritOwner>(out var inheritOwner))
-                inheritOwner.Owner = _myContextProvider;
+                inheritOwner.Owner = _contextProvider;
             
             projectileMovementController.transform.SetParent(null);
         }

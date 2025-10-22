@@ -8,20 +8,14 @@ namespace BitsNBobs
     {
         [SerializeField] WaveLibrary waveLibrary;
 
-        int _initialTimeSeconds;
         int _nextWaveI;
-
-        public void Awake()
-        {
-            _initialTimeSeconds = (int)Time.time;
-        }
 
         public void Update()
         {
             if (_nextWaveI >= waveLibrary.OrderedWaves.Count)
                 return;
-            
-            var timeSecondsPassed = (int)Time.time - _initialTimeSeconds;
+
+            var timeSecondsPassed = (int)Time.time;
             var wave = waveLibrary.OrderedWaves[_nextWaveI];
             if (timeSecondsPassed < wave.TimeSeconds)
                 return;
