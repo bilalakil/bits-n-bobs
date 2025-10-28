@@ -13,150 +13,53 @@ MonoBehaviour:
   m_Name: ItemLibrary
   m_EditorClassIdentifier: BitsNBobs::BitsNBobs.Data.ItemLibrary
   items:
-  - key: Item_T1Shoes
-    icon: {fileID: 21300000, guid: c165076f76594474b9fe1591925b5a4f, type: 3}
-    cost: 10
+  - key: Item_Shoes
+    icon: {fileID: 21300000, guid: cafcf733d6a68fc47b58f58e097e3358, type: 3}
+    cost: 50
     intStatKeys: []
     intStatValues: 
     floatStatKeys:
     - MovementSpeed
     floatStatValues:
-    - 0.2
-  - key: Item_T2Shoes
-    icon: {fileID: 21300000, guid: 92c49ba192b75134293e80998508e74c, type: 3}
-    cost: 20
-    intStatKeys: []
-    intStatValues: 
-    floatStatKeys:
-    - MovementSpeed
-    floatStatValues:
-    - 0.4
-  - key: Item_T3Shoes
-    icon: {fileID: 21300000, guid: a743995c1730947479ef3af299880a47, type: 3}
-    cost: 40
-    intStatKeys: []
-    intStatValues: 
-    floatStatKeys:
-    - MovementSpeed
-    floatStatValues:
-    - 0.8
-  - key: Item_T4Shoes
-    icon: {fileID: 21300000, guid: 0669a37ef051cc9479f77c9608d739ac, type: 3}
-    cost: 80
-    intStatKeys: []
-    intStatValues: 
-    floatStatKeys:
-    - MovementSpeed
-    floatStatValues:
-    - 1.6
-  - key: Item_T5Shoes
-    icon: {fileID: 21300000, guid: 629b3754fac6ae94898724fd57c335ef, type: 3}
-    cost: 160
-    intStatKeys: []
-    intStatValues: 
-    floatStatKeys:
-    - MovementSpeed
-    floatStatValues:
-    - 3.2
-  - key: Item_T1Crossbow
-    icon: {fileID: 21300000, guid: 8543d54683930804a9a15a5e7fafd58b, type: 3}
-    cost: 10
+    - 0.25
+  - key: Item_Crossbow
+    icon: {fileID: 21300000, guid: 5c1e854ca53cd9343b1e7ea435f8981b, type: 3}
+    cost: 50
     intStatKeys:
     - BaseDamage
-    intStatValues: 02000000
+    intStatValues: 06000000
     floatStatKeys: []
     floatStatValues: []
-  - key: Item_T2Crossbow
-    icon: {fileID: 21300000, guid: e7449078fa8827a4d80a83cd2fa01601, type: 3}
-    cost: 20
-    intStatKeys:
-    - BaseDamage
-    intStatValues: 04000000
-    floatStatKeys: []
-    floatStatValues: []
-  - key: Item_T3Crossbow
-    icon: {fileID: 21300000, guid: 4a27fd76b334d5147bf34491e8b4a8e6, type: 3}
-    cost: 40
-    intStatKeys:
-    - BaseDamage
-    intStatValues: 08000000
-    floatStatKeys: []
-    floatStatValues: []
-  - key: Item_T4Crossbow
-    icon: {fileID: 21300000, guid: 46aa8235cde344e498abbd5bfa05a475, type: 3}
-    cost: 80
-    intStatKeys:
-    - BaseDamage
-    intStatValues: 10000000
-    floatStatKeys: []
-    floatStatValues: []
-  - key: Item_T5Crossbow
-    icon: {fileID: 21300000, guid: 0ef66e4fa1b0a684d85e036ec5602a5b, type: 3}
-    cost: 160
-    intStatKeys:
-    - BaseDamage
-    intStatValues: 20000000
-    floatStatKeys: []
-    floatStatValues: []
-  - key: Item_T1Gloves
-    icon: {fileID: 21300000, guid: 84c169c99aef4ce468e4dcb9193d54e2, type: 3}
-    cost: 10
+  - key: Item_Gloves
+    icon: {fileID: 21300000, guid: ee83487166e575747999fb8dc269ce80, type: 3}
+    cost: 50
     intStatKeys: []
     intStatValues: 
     floatStatKeys:
     - AttackSpeed
     floatStatValues:
-    - 0.02
-  - key: Item_T2Gloves
-    icon: {fileID: 21300000, guid: e9201bd0cab8aae439a95920ae4d0db5, type: 3}
-    cost: 20
+    - -0.05
+  - key: Item_GoldCrown
+    icon: {fileID: 21300000, guid: 5b77912d677a50a4d977995203f49a87, type: 3}
+    cost: -50
     intStatKeys: []
     intStatValues: 
-    floatStatKeys:
-    - AttackSpeed
-    floatStatValues:
-    - 0.04
-  - key: Item_T3Gloves
-    icon: {fileID: 21300000, guid: d2427fd5354e8a34f996156cc20c3a2e, type: 3}
-    cost: 40
-    intStatKeys: []
-    intStatValues: 
-    floatStatKeys:
-    - AttackSpeed
-    floatStatValues:
-    - 0.08
-  - key: Item_T4Gloves
-    icon: {fileID: 21300000, guid: c24473788dbb639459c1d46c2bde7a81, type: 3}
-    cost: 80
-    intStatKeys: []
-    intStatValues: 
-    floatStatKeys:
-    - AttackSpeed
-    floatStatValues:
-    - 0.16
-  - key: Item_T5Gloves
-    icon: {fileID: 21300000, guid: 983ed4bbced57a342a070bd1f1392d96, type: 3}
-    cost: 160
-    intStatKeys: []
-    intStatValues: 
-    floatStatKeys:
-    - AttackSpeed
-    floatStatValues:
-    - 0.32
-  - key: Item_T0DamageAmulet
-    icon: {fileID: 21300000, guid: 4fb9f571c2e7ac04d85cdb802a60e9ad, type: 3}
+    floatStatKeys: []
+    floatStatValues: []
+  - key: Item_DamageAmulet
+    icon: {fileID: 21300000, guid: b01c30814d744204a9a2695dffb5b283, type: 3}
     cost: 0
     intStatKeys:
     - BaseDamage
-    intStatValues: 01000000
+    intStatValues: 03000000
     floatStatKeys: []
     floatStatValues: []
-  - key: Item_T0SpeedAmulet
-    icon: {fileID: 21300000, guid: 9ae1a8984c8754e4ba2da8e411fe6747, type: 3}
+  - key: Item_SpeedAmulet
+    icon: {fileID: 21300000, guid: 2c354457b8ea00e4b88909878675c3f8, type: 3}
     cost: 0
     intStatKeys: []
     intStatValues: 
     floatStatKeys:
     - MovementSpeed
     floatStatValues:
-    - 0.1
+    - 0.25

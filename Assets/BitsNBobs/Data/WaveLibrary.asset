@@ -13,31 +13,6 @@ MonoBehaviour:
   m_Name: WaveLibrary
   m_EditorClassIdentifier: BitsNBobs::BitsNBobs.Data.WaveLibrary
   orderedWaves:
-  - timeSeconds: 120
-    enemyPrefabs:
-    - {fileID: 6788510164101919230, guid: ed8919663ecbe3249bf26163424942d0, type: 3}
-    - {fileID: 6788510164101919230, guid: 2e2cea3f065411b47ace7311cf22c3e7, type: 3}
-    - {fileID: 6788510164101919230, guid: f4d05550a6c74cf45a22158401b156a6, type: 3}
-    - {fileID: 6788510164101919230, guid: 64dd90cc6d1427b4ca03894ef9b8b7df, type: 3}
-    enemyCounts: 0a000000020000000200000002000000
-  - timeSeconds: 240
-    enemyPrefabs:
-    - {fileID: 6788510164101919230, guid: a6bd05fceec448244affbd1cf0a4ce28, type: 3}
-    enemyCounts: 28000000
-  - timeSeconds: 360
-    enemyPrefabs:
-    - {fileID: 6788510164101919230, guid: ed8919663ecbe3249bf26163424942d0, type: 3}
-    - {fileID: 6788510164101919230, guid: 2e2cea3f065411b47ace7311cf22c3e7, type: 3}
-    - {fileID: 6788510164101919230, guid: f4d05550a6c74cf45a22158401b156a6, type: 3}
-    - {fileID: 6788510164101919230, guid: 64dd90cc6d1427b4ca03894ef9b8b7df, type: 3}
-    - {fileID: 6788510164101919230, guid: a6bd05fceec448244affbd1cf0a4ce28, type: 3}
-    enemyCounts: 1900000005000000140000000a00000005000000
-  - timeSeconds: 480
-    enemyPrefabs:
-    - {fileID: 6788510164101919230, guid: 2e2cea3f065411b47ace7311cf22c3e7, type: 3}
-    - {fileID: 6788510164101919230, guid: 64dd90cc6d1427b4ca03894ef9b8b7df, type: 3}
-    - {fileID: 6788510164101919230, guid: a6bd05fceec448244affbd1cf0a4ce28, type: 3}
-    enemyCounts: 0a0000001e00000064000000
   - timeSeconds: 600
     enemyPrefabs:
     - {fileID: 6788510164101919230, guid: ed8919663ecbe3249bf26163424942d0, type: 3}
@@ -45,5 +20,6 @@ MonoBehaviour:
     - {fileID: 6788510164101919230, guid: f4d05550a6c74cf45a22158401b156a6, type: 3}
     - {fileID: 6788510164101919230, guid: 64dd90cc6d1427b4ca03894ef9b8b7df, type: 3}
     - {fileID: 6788510164101919230, guid: a6bd05fceec448244affbd1cf0a4ce28, type: 3}
-    enemyCounts: 3200000032000000320000003200000032000000
+    - {fileID: 6788510164101919230, guid: 2e691837051dccd4aa8ae4682ad7117a, type: 3}
+    enemyCounts: 640000006400000064000000640000006400000064000000
   enemyLibrary: {fileID: 11400000, guid: 24843710ce7bf8d4daa48d2a6b2339d8, type: 2}

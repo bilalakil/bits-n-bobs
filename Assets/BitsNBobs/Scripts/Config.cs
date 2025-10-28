@@ -5,290 +5,136 @@ namespace BitsNBobs
 {
     public static class Config
     {
-        private static readonly Dictionary<string, object> Data = new()
+        const int BASE_ENEMY_COINS_DROPPED = 5;
+        const int BASE_ENEMY_HEALTH = 100;
+        const float BASE_ENEMY_ATTACK_SPEED = 1f;
+        const int BASE_ENEMY_DAMAGE = 10;
+        const float BASE_ENEMY_MOVEMENT_SPEED = 2.5f;
+
+        const int BASE_ITEM_COST = 50;
+        const int BASE_ITEM_HEALTH = 20;
+        const float BASE_ITEM_HEALTH_REGENERATION = .1f;
+        const float BASE_ITEM_MOVEMENT_SPEED = .25f;
+        const int BASE_ITEM_DAMAGE = 6;
+        const float BASE_ITEM_ATTACK_SPEED = -.05f;
+        const float BASE_ITEM_ATTACK_RANGE = 1f;
+        const float BASE_ITEM_PROJECTILE_SPEED = 1.5f;
+
+        static readonly Dictionary<string, object> Data = new()
         {
             { "Player.InitialMaxHealth", 100 },
+            { "Player.InitialHealthRegenerationSecond", .5f },
             { "Player.MovementSpeed", 3.5f },
             { "Player.MovementSpeedCap", 10f },
             { "Player.ProjectileAttack.BaseCooldownSeconds", 2f },
+            { "Player.ProjectileAttack.BaseCooldownSecondsCap", .1f },
             { "Player.ProjectileAttack.BaseTargetRange", 6f },
+            { "Player.ProjectileAttack.BaseTargetRangeCap", 20f },
             { "Player_Projectile.BaseDamage", 25 },
             { "Player_Projectile.MovementSpeed", 8f },
 
 
-
-            { "Shop.RefreshCost", 10 },
-
-
-
-            { "Enemy_Slime_Basic.DeathCoinAmount", 3 },
-            { "Enemy_Slime_Basic.InitialMaxHealth", 100 },
-            { "Enemy_Slime_Basic.MeleeAttack.BaseCooldownSeconds", 1f },
-            { "Enemy_Slime_Basic.MeleeAttack.BaseDamage", 10 },
-            { "Enemy_Slime_Basic.MovementSpeed", 2.5f },
-
-            { "Enemy_Slime_Fast.DeathCoinAmount", 6 },
-            { "Enemy_Slime_Fast.InitialMaxHealth", 100 },
-            { "Enemy_Slime_Fast.MeleeAttack.BaseCooldownSeconds", 1f },
-            { "Enemy_Slime_Fast.MeleeAttack.BaseDamage", 10 },
-            { "Enemy_Slime_Fast.MovementSpeed", 4f },
-
-            { "Enemy_Slime_MoreDamage.DeathCoinAmount", 6 },
-            { "Enemy_Slime_MoreDamage.InitialMaxHealth", 100 },
-            { "Enemy_Slime_MoreDamage.MeleeAttack.BaseCooldownSeconds", 1f },
-            { "Enemy_Slime_MoreDamage.MeleeAttack.BaseDamage", 20 },
-            { "Enemy_Slime_MoreDamage.MovementSpeed", 2.5f },
-
-            { "Enemy_Slime_Tanky.DeathCoinAmount", 6 },
-            { "Enemy_Slime_Tanky.InitialMaxHealth", 200 },
-            { "Enemy_Slime_Tanky.MeleeAttack.BaseCooldownSeconds", 1f },
-            { "Enemy_Slime_Tanky.MeleeAttack.BaseDamage", 10 },
-            { "Enemy_Slime_Tanky.MovementSpeed", 2.5f },
-
-
-            { "Enemy_Bat_Basic.DeathCoinAmount", 3 },
-            { "Enemy_Bat_Basic.InitialMaxHealth", 50 },
-            { "Enemy_Bat_Basic.MeleeAttack.BaseCooldownSeconds", .05f },
-            { "Enemy_Bat_Basic.MeleeAttack.BaseDamage", 1 },
-            { "Enemy_Bat_Basic.MovementSpeed", 6f },
-
-
-            { "Enemy_Snail_Basic.DeathCoinAmount", 12 },
-            { "Enemy_Snail_Basic.InitialMaxHealth", 1000 },
-            { "Enemy_Snail_Basic.MeleeAttack.BaseCooldownSeconds", .25f },
-            { "Enemy_Snail_Basic.MeleeAttack.BaseDamage", 5 },
-            { "Enemy_Snail_Basic.MovementSpeed", .5f },
-
-
-
-            { "Wave.1.TimeSeconds", 120 },
-
-            { "Wave.1.SpawnCounts.Enemy_Slime_Basic", 10 },
-            { "Wave.1.SpawnCounts.Enemy_Slime_Fast", 2 },
-            { "Wave.1.SpawnCounts.Enemy_Slime_MoreDamage", 2 },
-            { "Wave.1.SpawnCounts.Enemy_Slime_Tanky", 2 },
-
-            { "Wave.1.SpawnCounts.Enemy_Bat_Basic", 0 },
-
-
-            { "Wave.2.TimeSeconds", 240 },
-
-            { "Wave.2.SpawnCounts.Enemy_Slime_Basic", 0 },
-            { "Wave.2.SpawnCounts.Enemy_Slime_Fast", 0 },
-            { "Wave.2.SpawnCounts.Enemy_Slime_MoreDamage", 0 },
-            { "Wave.2.SpawnCounts.Enemy_Slime_Tanky", 0 },
-
-            { "Wave.2.SpawnCounts.Enemy_Bat_Basic", 40 },
-
-
-            { "Wave.3.TimeSeconds", 360 },
-
-            { "Wave.3.SpawnCounts.Enemy_Slime_Basic", 25 },
-            { "Wave.3.SpawnCounts.Enemy_Slime_Fast", 5 },
-            { "Wave.3.SpawnCounts.Enemy_Slime_MoreDamage", 20 },
-            { "Wave.3.SpawnCounts.Enemy_Slime_Tanky", 10 },
-
-            { "Wave.3.SpawnCounts.Enemy_Bat_Basic", 5 },
-
-
-            { "Wave.4.TimeSeconds", 480 },
-
-            { "Wave.4.SpawnCounts.Enemy_Slime_Basic", 0 },
-            { "Wave.4.SpawnCounts.Enemy_Slime_Fast", 10 },
-            { "Wave.4.SpawnCounts.Enemy_Slime_MoreDamage", 0 },
-            { "Wave.4.SpawnCounts.Enemy_Slime_Tanky", 30 },
-
-            { "Wave.4.SpawnCounts.Enemy_Bat_Basic", 100 },
-
-
-            { "Wave.5.TimeSeconds", 600 },
-
-            { "Wave.5.SpawnCounts.Enemy_Slime_Basic", 50 },
-            { "Wave.5.SpawnCounts.Enemy_Slime_Fast", 50 },
-            { "Wave.5.SpawnCounts.Enemy_Slime_MoreDamage", 50 },
-            { "Wave.5.SpawnCounts.Enemy_Slime_Tanky", 50 },
-
-            { "Wave.5.SpawnCounts.Enemy_Bat_Basic", 50 },
-
-
-
-            { "Item_T1Shoes.Cost", 10 },
-            { "Item_T1Shoes.Stats.MovementSpeed", .2f },
-
-            { "Item_T2Shoes.Cost", 20 },
-            { "Item_T2Shoes.Stats.MovementSpeed", .4f },
-
-            { "Item_T3Shoes.Cost", 40 },
-            { "Item_T3Shoes.Stats.MovementSpeed", .8f },
-
-            { "Item_T4Shoes.Cost", 80 },
-            { "Item_T4Shoes.Stats.MovementSpeed", 1.6f },
-
-            { "Item_T5Shoes.Cost", 160 },
-            { "Item_T5Shoes.Stats.MovementSpeed", 3.2f },
-
-
-            { "Item_T1Armour.Cost", 10 },
-            { "Item_T1Armour.Stats.InitialMaxHealth", 4 },
-
-            { "Item_T2Armour.Cost", 20 },
-            { "Item_T2Armour.Stats.InitialMaxHealth", 8 },
-
-            { "Item_T3Armour.Cost", 40 },
-            { "Item_T3Armour.Stats.InitialMaxHealth", 16 },
-
-            { "Item_T4Armour.Cost", 80 },
-            { "Item_T4Armour.Stats.InitialMaxHealth", 32 },
-
-            { "Item_T5Armour.Cost", 160 },
-            { "Item_T5Armour.Stats.InitialMaxHealth", 64 },
-
-
-            { "Item_T1Crossbow.Cost", 10 },
-            { "Item_T1Crossbow.Stats.BaseDamage", 2 },
-
-            { "Item_T2Crossbow.Cost", 20 },
-            { "Item_T2Crossbow.Stats.BaseDamage", 4 },
-
-            { "Item_T3Crossbow.Cost", 40 },
-            { "Item_T3Crossbow.Stats.BaseDamage", 8 },
-
-            { "Item_T4Crossbow.Cost", 80 },
-            { "Item_T4Crossbow.Stats.BaseDamage", 16 },
-
-            { "Item_T5Crossbow.Cost", 160 },
-            { "Item_T5Crossbow.Stats.BaseDamage", 32 },
-
-
-            { "Item_T1Bolts.Cost", 10 },
-            { "Item_T1Bolts.Stats.ProjectileSpeed", .25f },
-            { "Item_T1Bolts.Stats.BaseDamage", 1 },
-
-            { "Item_T2Bolts.Cost", 20 },
-            { "Item_T2Bolts.Stats.ProjectileSpeed", .5f },
-            { "Item_T2Bolts.Stats.BaseDamage", 2 },
-
-            { "Item_T3Bolts.Cost", 40 },
-            { "Item_T3Bolts.Stats.ProjectileSpeed", 1f },
-            { "Item_T3Bolts.Stats.BaseDamage", 4 },
-
-            { "Item_T4Bolts.Cost", 80 },
-            { "Item_T4Bolts.Stats.ProjectileSpeed", 2f },
-            { "Item_T4Bolts.Stats.BaseDamage", 8 },
-
-            { "Item_T5Bolts.Cost", 160 },
-            { "Item_T5Bolts.Stats.ProjectileSpeed", 4f },
-            { "Item_T5Bolts.Stats.BaseDamage", 16 },
-
-
-            { "Item_T1Binoculars.Cost", 10 },
-            { "Item_T1Binoculars.Stats.BaseTargetRange", .2f },
-
-            { "Item_T2Binoculars.Cost", 20 },
-            { "Item_T2Binoculars.Stats.BaseTargetRange", .4f },
-
-            { "Item_T3Binoculars.Cost", 40 },
-            { "Item_T3Binoculars.Stats.BaseTargetRange", .8f },
-
-            { "Item_T4Binoculars.Cost", 80 },
-            { "Item_T4Binoculars.Stats.BaseTargetRange", 1.6f },
-
-            { "Item_T5Binoculars.Cost", 160 },
-            { "Item_T5Binoculars.Stats.BaseTargetRange", 3.2f },
-
-
-            { "Item_T1Gloves.Cost", 10 },
-            { "Item_T1Gloves.Stats.AttackSpeed", .02f },
-
-            { "Item_T2Gloves.Cost", 20 },
-            { "Item_T2Gloves.Stats.AttackSpeed", .04f },
-
-            { "Item_T3Gloves.Cost", 40 },
-            { "Item_T3Gloves.Stats.AttackSpeed", .08f },
-
-            { "Item_T4Gloves.Cost", 80 },
-            { "Item_T4Gloves.Stats.AttackSpeed", .16f },
-
-            { "Item_T5Gloves.Cost", 160 },
-            { "Item_T5Gloves.Stats.AttackSpeed", .32f },
-
-
-            { "Item_T1Pants.Cost", 10 },
-            { "Item_T1Pants.Stats.InitialMaxHealth", 2 },
-            { "Item_T1Pants.Stats.MovementSpeed", .05f },
-            { "Item_T1Pants.Stats.AttackSpeed", .005f },
-
-            { "Item_T2Pants.Cost", 20 },
-            { "Item_T2Pants.Stats.InitialMaxHealth", 4 },
-            { "Item_T2Pants.Stats.MovementSpeed", .1f },
-            { "Item_T2Pants.Stats.AttackSpeed", .01f },
-
-            { "Item_T3Pants.Cost", 40 },
-            { "Item_T3Pants.Stats.InitialMaxHealth", 8 },
-            { "Item_T3Pants.Stats.MovementSpeed", .2f },
-            { "Item_T3Pants.Stats.AttackSpeed", .02f },
-
-            { "Item_T4Pants.Cost", 80 },
-            { "Item_T4Pants.Stats.InitialMaxHealth", 16 },
-            { "Item_T4Pants.Stats.MovementSpeed", .4f },
-            { "Item_T4Pants.Stats.AttackSpeed", .04f },
-
-            { "Item_T5Pants.Cost", 160 },
-            { "Item_T5Pants.Stats.InitialMaxHealth", 32 },
-            { "Item_T5Pants.Stats.MovementSpeed", .8f },
-            { "Item_T5Pants.Stats.AttackSpeed", .08f },
-
-
-            { "Item_T1Hat.Cost", 10 },
-            { "Item_T1Hat.Stats.BaseTargetRange", .1f },
-            { "Item_T1Hat.Stats.InitialMaxHealth", 2 },
-
-            { "Item_T2Hat.Cost", 20 },
-            { "Item_T2Hat.Stats.BaseTargetRange", .2f },
-            { "Item_T2Hat.Stats.InitialMaxHealth", 4 },
-
-            { "Item_T3Hat.Cost", 40 },
-            { "Item_T3Hat.Stats.BaseTargetRange", .4f },
-            { "Item_T3Hat.Stats.InitialMaxHealth", 8 },
-
-            { "Item_T4Hat.Cost", 80 },
-            { "Item_T4Hat.Stats.BaseTargetRange", .8f },
-            { "Item_T4Hat.Stats.InitialMaxHealth", 16 },
-
-            { "Item_T5Hat.Cost", 160 },
-            { "Item_T5Hat.Stats.BaseTargetRange", 1.6f },
-            { "Item_T5Hat.Stats.InitialMaxHealth", 32 },
-
-
-
-            { "Item_T6EyePiece.Cost", 320 },
-            { "Item_T6EyePiece.Stats.BaseTargetRange", 12f },
-            { "Item_T6EyePiece.Stats.BaseDamage", 16 },
-            { "Item_T6EyePiece.Stats.InitialMaxHealth", -50 },
-
-
-            { "Item_T6MedievalArmour.Cost", 320 },
-            { "Item_T6MedievalArmour.Stats.InitialMaxHealth", 500 },
-            { "Item_T6MedievalArmour.Stats.MovementSpeed", -1000f },
-
-
-            { "Item_T6LightningShoes.Cost", 320 },
-            { "Item_T6LightningShoes.Stats.MovementSpeed", 12f },
-            { "Item_T6LightningShoes.Stats.BaseTargetRange", -4f },
-
-
-            { "Item_T6GoldCrown.Cost", -30 },
-
-
-
-            { "Item_T0DamageAmulet.Cost", 0 },
-            { "Item_T0DamageAmulet.Stats.BaseDamage", 1 },
-
-            { "Item_T0HealthAmulet.Cost", 0 },
-            { "Item_T0HealthAmulet.Stats.InitialMaxHealth", 2 },
-
-            { "Item_T0SpeedAmulet.Cost", 0 },
-            { "Item_T0SpeedAmulet.Stats.MovementSpeed", .1f },
+            { "Enemy_Slime_Basic.DeathCoinAmount", BASE_ENEMY_COINS_DROPPED },
+            { "Enemy_Slime_Basic.InitialMaxHealth", BASE_ENEMY_HEALTH },
+            { "Enemy_Slime_Basic.MeleeAttack.BaseCooldownSeconds", BASE_ENEMY_ATTACK_SPEED },
+            { "Enemy_Slime_Basic.MeleeAttack.BaseDamage", BASE_ENEMY_DAMAGE },
+            { "Enemy_Slime_Basic.MovementSpeed", BASE_ENEMY_MOVEMENT_SPEED },
+
+            { "Enemy_Slime_Fast.DeathCoinAmount", BASE_ENEMY_COINS_DROPPED*2 },
+            { "Enemy_Slime_Fast.InitialMaxHealth", BASE_ENEMY_HEALTH },
+            { "Enemy_Slime_Fast.MeleeAttack.BaseCooldownSeconds", BASE_ENEMY_ATTACK_SPEED },
+            { "Enemy_Slime_Fast.MeleeAttack.BaseDamage", BASE_ENEMY_DAMAGE },
+            { "Enemy_Slime_Fast.MovementSpeed", BASE_ENEMY_MOVEMENT_SPEED*2 },
+
+            { "Enemy_Slime_MoreDamage.DeathCoinAmount", BASE_ENEMY_COINS_DROPPED*2 },
+            { "Enemy_Slime_MoreDamage.InitialMaxHealth", BASE_ENEMY_HEALTH },
+            { "Enemy_Slime_MoreDamage.MeleeAttack.BaseCooldownSeconds", BASE_ENEMY_ATTACK_SPEED },
+            { "Enemy_Slime_MoreDamage.MeleeAttack.BaseDamage", BASE_ENEMY_DAMAGE*2 },
+            { "Enemy_Slime_MoreDamage.MovementSpeed", BASE_ENEMY_MOVEMENT_SPEED },
+
+            { "Enemy_Slime_Tanky.DeathCoinAmount", BASE_ENEMY_COINS_DROPPED*2 },
+            { "Enemy_Slime_Tanky.InitialMaxHealth", BASE_ENEMY_HEALTH*2 },
+            { "Enemy_Slime_Tanky.MeleeAttack.BaseCooldownSeconds", BASE_ENEMY_ATTACK_SPEED },
+            { "Enemy_Slime_Tanky.MeleeAttack.BaseDamage", BASE_ENEMY_DAMAGE },
+            { "Enemy_Slime_Tanky.MovementSpeed", BASE_ENEMY_MOVEMENT_SPEED },
+
+            { "Enemy_Bat_Basic.DeathCoinAmount", BASE_ENEMY_COINS_DROPPED },
+            { "Enemy_Bat_Basic.InitialMaxHealth", BASE_ENEMY_HEALTH/2 },
+            { "Enemy_Bat_Basic.MeleeAttack.BaseCooldownSeconds", BASE_ENEMY_ATTACK_SPEED/8 },
+            { "Enemy_Bat_Basic.MeleeAttack.BaseDamage", BASE_ENEMY_DAMAGE },
+            { "Enemy_Bat_Basic.MovementSpeed", BASE_ENEMY_MOVEMENT_SPEED*3 },
+
+            { "Enemy_Snail_Basic.DeathCoinAmount", BASE_ENEMY_COINS_DROPPED*4 },
+            { "Enemy_Snail_Basic.InitialMaxHealth", BASE_ENEMY_HEALTH*10 },
+            { "Enemy_Snail_Basic.MeleeAttack.BaseCooldownSeconds", BASE_ENEMY_ATTACK_SPEED/4 },
+            { "Enemy_Snail_Basic.MeleeAttack.BaseDamage", BASE_ENEMY_DAMAGE/2 },
+            { "Enemy_Snail_Basic.MovementSpeed", BASE_ENEMY_MOVEMENT_SPEED/4 },
+
+
+            { "Shop.RefreshCost", BASE_ITEM_COST/5 },
+
+            { "Item_Shoes.Cost", BASE_ITEM_COST },
+            { "Item_Shoes.Stats.MovementSpeed", BASE_ITEM_MOVEMENT_SPEED },
+
+            { "Item_Armour.Cost", BASE_ITEM_COST },
+            { "Item_Armour.Stats.InitialMaxHealth", BASE_ITEM_HEALTH/2 },
+            { "Item_Armour.Stats.InitialHealthRegeneratonSecond", BASE_ITEM_HEALTH_REGENERATION/2 },
+
+            { "Item_Crossbow.Cost", BASE_ITEM_COST },
+            { "Item_Crossbow.Stats.BaseDamage", BASE_ITEM_DAMAGE },
+
+            { "Item_Bolts.Cost", BASE_ITEM_COST },
+            { "Item_Bolts.Stats.ProjectileSpeed", BASE_ITEM_PROJECTILE_SPEED/2 },
+            { "Item_Bolts.Stats.BaseDamage", BASE_ITEM_DAMAGE/2 },
+
+            { "Item_Binoculars.Cost", BASE_ITEM_COST },
+            { "Item_Binoculars.Stats.BaseTargetRange", BASE_ITEM_ATTACK_RANGE },
+
+            { "Item_Gloves.Cost", BASE_ITEM_COST },
+            { "Item_Gloves.Stats.AttackSpeed", BASE_ITEM_ATTACK_SPEED },
+
+            { "Item_Pants.Cost", BASE_ITEM_COST },
+            { "Item_Pants.Stats.InitialMaxHealth", BASE_ITEM_HEALTH/2 },
+            { "Item_Pants.Stats.MovementSpeed", BASE_ITEM_MOVEMENT_SPEED/2 },
+
+            { "Item_Hat.Cost", BASE_ITEM_COST },
+            { "Item_Hat.Stats.InitialMaxHealth", BASE_ITEM_HEALTH/2 },
+            { "Item_Hat.Stats.BaseTargetRange", BASE_ITEM_ATTACK_RANGE/2 },
+
+            { "Item_EyePiece.Cost", BASE_ITEM_COST*2 },
+            { "Item_EyePiece.Stats.BaseTargetRange", BASE_ITEM_ATTACK_RANGE*5 },
+            { "Item_EyePiece.Stats.BaseDamage", BASE_ITEM_DAMAGE*3 },
+            { "Item_EyePiece.Stats.InitialMaxHealth", -BASE_ITEM_HEALTH*3 },
+
+            { "Item_MedievalArmour.Cost", BASE_ITEM_COST*2 },
+            { "Item_MedievalArmour.Stats.InitialMaxHealth", BASE_ITEM_HEALTH*5 },
+            { "Item_MedievalArmour.Stats.InitialHealthRegeneratonSecond", BASE_ITEM_HEALTH_REGENERATION/2 },
+            { "Item_MedievalArmour.Stats.MovementSpeed", -BASE_ITEM_MOVEMENT_SPEED*10 },
+
+            { "Item_LightningShoes.Cost", BASE_ITEM_COST*2 },
+            { "Item_LightningShoes.Stats.MovementSpeed", BASE_ITEM_MOVEMENT_SPEED*10 },
+            { "Item_LightningShoes.Stats.BaseTargetRange", -BASE_ITEM_ATTACK_RANGE*3 },
+
+            { "Item_GoldCrown.Cost", -BASE_ITEM_COST },
+
+            { "Item_DamageAmulet.Cost", BASE_ITEM_COST-BASE_ITEM_COST },
+            { "Item_DamageAmulet.Stats.BaseDamage", BASE_ITEM_DAMAGE/2 },
+
+            { "Item_HealthAmulet.Cost", BASE_ITEM_COST-BASE_ITEM_COST },
+            { "Item_HealthAmulet.Stats.InitialMaxHealth", BASE_ITEM_HEALTH/2 },
+
+            { "Item_SpeedAmulet.Cost", BASE_ITEM_COST-BASE_ITEM_COST },
+            { "Item_SpeedAmulet.Stats.MovementSpeed", BASE_ITEM_MOVEMENT_SPEED },
+
+
+            { "Wave.Final.TimeSeconds", 600 },
+
+            { "Wave.Final.SpawnCounts.Enemy_Slime_Basic", 100 },
+            { "Wave.Final.SpawnCounts.Enemy_Slime_Fast", 100 },
+            { "Wave.Final.SpawnCounts.Enemy_Slime_MoreDamage", 100 },
+            { "Wave.Final.SpawnCounts.Enemy_Slime_Tanky", 100 },
+            { "Wave.Final.SpawnCounts.Enemy_Bat_Basic", 100 },
+            { "Wave.Final.SpawnCounts.Enemy_Snail_Basic", 100 },
         };
         public static IReadOnlyCollection<string> DataKeys => Data.Keys;
         
