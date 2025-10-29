@@ -4,14 +4,21 @@ namespace BitsNBobs
 {
     public class FixedDirectionMovementController : MonoBehaviour
     {
+        public MoveSpeedHelper.MovementType movementType;
         public string speedKey;
         public bool alsoRotate;
 
+        IUnitProvider _unitProvider;
         Vector2 _direction;
+
+        public void Awake()
+        {
+            _unitProvider = GetComponent<IUnitProvider>();
+        }
 
         public void Update()
         {
-            var speed = Config.Get<float>(speedKey);
+            var speed = MoveSpeedHelper.CalculateMoveSpeed(_unitProvider, speedKey, movementType);
             transform.Translate(_direction * speed * Time.deltaTime, Space.World);
         }
 

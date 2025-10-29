@@ -1,14 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace BitsNBobs
 {
+    [RequireComponent(typeof(IUnitProvider))]
     public class HealthController : MonoBehaviour
     {
         public event Action OnHealthChanged;
         public event Action OnDiedChanged;
 
         public string initialMaxHealthKey;
+        public string initialBaseHealthRegenerationKey;
 
         int _maxHealth;
         int _currentHealth;
@@ -16,7 +19,7 @@ namespace BitsNBobs
         public int MaxHealth
         {
             get => _maxHealth;
-            set
+            private set
             {
                 if (_maxHealth == value)
                     return;
@@ -49,10 +52,71 @@ namespace BitsNBobs
             }
         }
         public bool IsDead => _currentHealth <= 0;
+        
+        public float HealthRegenerationPerSecond { get; private set; }
+
+        IUnitProvider _unitProvider;
+        int _initialMaxHealth;
+        float _initialBaseHealthRegenerationPerSecond;
+
+        float _accumulatedRegen;
 
         public void Awake()
         {
-            MaxHealth = CurrentHealth = Config.Get<int>(initialMaxHealthKey);
+            _unitProvider = gameObject.GetComponent<IUnitProvider>();
+            _initialMaxHealth = MaxHealth = CurrentHealth = Config.Get<int>(initialMaxHealthKey);
+            _initialBaseHealthRegenerationPerSecond = HealthRegenerationPerSecond =
+                string.IsNullOrEmpty(initialBaseHealthRegenerationKey)
+                    ? 0f
+                    : Config.Get<float>(initialBaseHealthRegenerationKey);
+        }
+
+        public void OnEnable()
+        {
+            if (_unitProvider.Stats == null)
+                return;
+            _unitProvider.Stats.RegisterChangeHandler(Stats.MAX_HEALTH, HandleMaxHealthStatChanged);
+            HandleMaxHealthStatChanged();
+
+            _unitProvider.Stats.RegisterChangeHandler(Stats.BASE_HEALTH_REGENERATION_PER_SECOND,
+                HandleRegenStatChanged);
+            HandleRegenStatChanged();
+        }
+
+        public void OnDisable()
+        {
+            _unitProvider.Stats?.DeregisterChangeHandler(Stats.MAX_HEALTH, HandleMaxHealthStatChanged);
+            _unitProvider.Stats?.DeregisterChangeHandler(Stats.BASE_HEALTH_REGENERATION_PER_SECOND,
+                HandleRegenStatChanged);
+        }
+
+        public void Update()
+        {
+            TickHealthRegen();
+        }
+
+        void HandleMaxHealthStatChanged()
+        {
+            MaxHealth = _initialMaxHealth + _unitProvider.Stats.IntStats.GetValueOrDefault(Stats.MAX_HEALTH);
+        }
+
+        void HandleRegenStatChanged()
+        {
+            HealthRegenerationPerSecond = _initialBaseHealthRegenerationPerSecond +
+                                           _unitProvider.Stats.FloatStats.GetValueOrDefault(
+                                               Stats.BASE_HEALTH_REGENERATION_PER_SECOND);
+        }
+
+        void TickHealthRegen()
+        {
+            if (CurrentHealth >= MaxHealth)
+                return;
+            _accumulatedRegen += HealthRegenerationPerSecond * Time.deltaTime;
+            if (_accumulatedRegen < 1)
+                return;
+            var amountToHealth = (int)_accumulatedRegen;
+            _accumulatedRegen -= amountToHealth;
+            CurrentHealth += amountToHealth;
         }
     }
 }

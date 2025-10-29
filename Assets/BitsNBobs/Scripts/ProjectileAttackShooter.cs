@@ -60,8 +60,7 @@ namespace BitsNBobs
         void SpawnProjectile(Vector3 myPos, Vector3 targetPos)
         {
             var projectileMovementController =
-                Instantiate<FixedDirectionMovementController>(projectilePrefab, myPos, Quaternion.identity,
-                    parent: DisabledGameObject.I.transform);
+                Instantiate(projectilePrefab, myPos, Quaternion.identity, parent: DisabledGameObject.I.transform);
             projectileMovementController.MoveTowards(targetPos);
 
             if (projectileMovementController.TryGetComponent<InheritOwner>(out var inheritOwner))

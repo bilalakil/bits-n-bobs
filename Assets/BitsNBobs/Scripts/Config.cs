@@ -5,6 +5,10 @@ namespace BitsNBobs
 {
     public static class Config
     {
+        public const float MOVE_SPEED_CAP = 10f;
+        public const float TARGET_RANGE_CAP = 20f;
+        public const float PROJECTILE_SPEED_SPEED_CAP = 20f;
+        
         const int BASE_ENEMY_COINS_DROPPED = 5;
         const int BASE_ENEMY_HEALTH = 100;
         const float BASE_ENEMY_ATTACK_SPEED = 1f;
@@ -13,23 +17,20 @@ namespace BitsNBobs
 
         const int BASE_ITEM_COST = 50;
         const int BASE_ITEM_HEALTH = 20;
-        const float BASE_ITEM_HEALTH_REGENERATION = .1f;
+        const float BASE_ITEM_HEALTH_REGENERATION = .2f;
         const float BASE_ITEM_MOVEMENT_SPEED = .25f;
         const int BASE_ITEM_DAMAGE = 6;
-        const float BASE_ITEM_ATTACK_SPEED = -.05f;
+        const float BASE_ITEM_ATTACK_SPEED = .025f;
         const float BASE_ITEM_ATTACK_RANGE = 1f;
         const float BASE_ITEM_PROJECTILE_SPEED = 1.5f;
 
         static readonly Dictionary<string, object> Data = new()
         {
             { "Player.InitialMaxHealth", 100 },
-            { "Player.BaseHealthRegenerationPerSecond", .5f },
+            { "Player.BaseHealthRegenerationPerSecond", .6f },
             { "Player.MovementSpeed", 3.5f },
-            { "Player.MovementSpeedCap", 10f },
             { "Player.ProjectileAttack.BaseCooldownSeconds", 2f },
-            { "Player.ProjectileAttack.BaseCooldownSecondsCap", .1f },
             { "Player.ProjectileAttack.BaseTargetRange", 6f },
-            { "Player.ProjectileAttack.BaseTargetRangeCap", 20f },
             { "Player_Projectile.BaseDamage", 25 },
             { "Player_Projectile.MovementSpeed", 8f },
 
@@ -75,6 +76,10 @@ namespace BitsNBobs
 
             { "Item_Shoes.Cost", BASE_ITEM_COST },
             { "Item_Shoes.Stats.MovementSpeed", BASE_ITEM_MOVEMENT_SPEED },
+
+            { "Item_Helmet.Cost", BASE_ITEM_COST },
+            { "Item_Helmet.Stats.MaxHealth", BASE_ITEM_HEALTH*2 },
+            { "Item_Helmet.Stats.BaseTargetRange", -BASE_ITEM_ATTACK_RANGE*1.5 },
 
             { "Item_Armour.Cost", BASE_ITEM_COST },
             { "Item_Armour.Stats.MaxHealth", BASE_ITEM_HEALTH/2 },
@@ -127,14 +132,13 @@ namespace BitsNBobs
             { "Item_SpeedAmulet.Stats.MovementSpeed", BASE_ITEM_MOVEMENT_SPEED },
 
 
-            { "Wave.Final.TimeSeconds", 600 },
-
-            { "Wave.Final.SpawnCounts.Enemy_Slime_Basic", 100 },
-            { "Wave.Final.SpawnCounts.Enemy_Slime_Fast", 100 },
-            { "Wave.Final.SpawnCounts.Enemy_Slime_MoreDamage", 100 },
-            { "Wave.Final.SpawnCounts.Enemy_Slime_Tanky", 100 },
-            { "Wave.Final.SpawnCounts.Enemy_Bat_Basic", 100 },
-            { "Wave.Final.SpawnCounts.Enemy_Snail_Basic", 100 },
+            { "Wave.End.TimeSeconds", 600 },
+            { "Wave.End.SpawnCounts.Enemy_Slime_Basic", 100 },
+            { "Wave.End.SpawnCounts.Enemy_Slime_Fast", 15 },
+            { "Wave.End.SpawnCounts.Enemy_Slime_MoreDamage", 15 },
+            { "Wave.End.SpawnCounts.Enemy_Slime_Tanky", 15 },
+            { "Wave.End.SpawnCounts.Enemy_Bat_Basic", 15 },
+            { "Wave.End.SpawnCounts.Enemy_Snail_Basic", 15 },
         };
         public static IReadOnlyCollection<string> DataKeys => Data.Keys;
         
