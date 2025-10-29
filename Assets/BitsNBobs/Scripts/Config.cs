@@ -23,7 +23,7 @@ namespace BitsNBobs
         static readonly Dictionary<string, object> Data = new()
         {
             { "Player.InitialMaxHealth", 100 },
-            { "Player.InitialHealthRegenerationSecond", .5f },
+            { "Player.BaseHealthRegenerationPerSecond", .5f },
             { "Player.MovementSpeed", 3.5f },
             { "Player.MovementSpeedCap", 10f },
             { "Player.ProjectileAttack.BaseCooldownSeconds", 2f },
@@ -77,8 +77,8 @@ namespace BitsNBobs
             { "Item_Shoes.Stats.MovementSpeed", BASE_ITEM_MOVEMENT_SPEED },
 
             { "Item_Armour.Cost", BASE_ITEM_COST },
-            { "Item_Armour.Stats.InitialMaxHealth", BASE_ITEM_HEALTH/2 },
-            { "Item_Armour.Stats.InitialHealthRegeneratonSecond", BASE_ITEM_HEALTH_REGENERATION/2 },
+            { "Item_Armour.Stats.MaxHealth", BASE_ITEM_HEALTH/2 },
+            { "Item_Armour.Stats.BaseHealthRegenerationPerSecond", BASE_ITEM_HEALTH_REGENERATION/2 },
 
             { "Item_Crossbow.Cost", BASE_ITEM_COST },
             { "Item_Crossbow.Stats.BaseDamage", BASE_ITEM_DAMAGE },
@@ -94,21 +94,21 @@ namespace BitsNBobs
             { "Item_Gloves.Stats.AttackSpeed", BASE_ITEM_ATTACK_SPEED },
 
             { "Item_Pants.Cost", BASE_ITEM_COST },
-            { "Item_Pants.Stats.InitialMaxHealth", BASE_ITEM_HEALTH/2 },
+            { "Item_Pants.Stats.MaxHealth", BASE_ITEM_HEALTH/2 },
             { "Item_Pants.Stats.MovementSpeed", BASE_ITEM_MOVEMENT_SPEED/2 },
 
             { "Item_Hat.Cost", BASE_ITEM_COST },
-            { "Item_Hat.Stats.InitialMaxHealth", BASE_ITEM_HEALTH/2 },
+            { "Item_Hat.Stats.MaxHealth", BASE_ITEM_HEALTH/2 },
             { "Item_Hat.Stats.BaseTargetRange", BASE_ITEM_ATTACK_RANGE/2 },
 
             { "Item_EyePiece.Cost", BASE_ITEM_COST*2 },
             { "Item_EyePiece.Stats.BaseTargetRange", BASE_ITEM_ATTACK_RANGE*5 },
             { "Item_EyePiece.Stats.BaseDamage", BASE_ITEM_DAMAGE*3 },
-            { "Item_EyePiece.Stats.InitialMaxHealth", -BASE_ITEM_HEALTH*3 },
+            { "Item_EyePiece.Stats.MaxHealth", -BASE_ITEM_HEALTH*3 },
 
             { "Item_MedievalArmour.Cost", BASE_ITEM_COST*2 },
-            { "Item_MedievalArmour.Stats.InitialMaxHealth", BASE_ITEM_HEALTH*5 },
-            { "Item_MedievalArmour.Stats.InitialHealthRegeneratonSecond", BASE_ITEM_HEALTH_REGENERATION/2 },
+            { "Item_MedievalArmour.Stats.MaxHealth", BASE_ITEM_HEALTH*5 },
+            { "Item_MedievalArmour.Stats.BaseHealthRegenerationPerSecond", BASE_ITEM_HEALTH_REGENERATION/2 },
             { "Item_MedievalArmour.Stats.MovementSpeed", -BASE_ITEM_MOVEMENT_SPEED*10 },
 
             { "Item_LightningShoes.Cost", BASE_ITEM_COST*2 },
@@ -121,7 +121,7 @@ namespace BitsNBobs
             { "Item_DamageAmulet.Stats.BaseDamage", BASE_ITEM_DAMAGE/2 },
 
             { "Item_HealthAmulet.Cost", BASE_ITEM_COST-BASE_ITEM_COST },
-            { "Item_HealthAmulet.Stats.InitialMaxHealth", BASE_ITEM_HEALTH/2 },
+            { "Item_HealthAmulet.Stats.MaxHealth", BASE_ITEM_HEALTH/2 },
 
             { "Item_SpeedAmulet.Cost", BASE_ITEM_COST-BASE_ITEM_COST },
             { "Item_SpeedAmulet.Stats.MovementSpeed", BASE_ITEM_MOVEMENT_SPEED },
