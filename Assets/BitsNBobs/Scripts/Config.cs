@@ -5,7 +5,7 @@ namespace BitsNBobs
 {
     public static class Config
     {
-        public const int BASE_PLAYER_COINS = 50;
+        const int BASE_PLAYER_COINS = 50;
         
         public const int BASE_ENEMY_SPAWNER_UPGRADE_COST = 10;
         public const int ENEMY_SPAWNER_UPGRADE_COST_ADDITION = 5;
@@ -33,6 +33,7 @@ namespace BitsNBobs
 
         static readonly Dictionary<string, object> Data = new()
         {
+            { "Player.InitialCoinAmount", BASE_PLAYER_COINS },
             { "Player.InitialMaxHealth", 100 },
             { "Player.BaseHealthRegenerationPerSecond", .6f },
             { "Player.MovementSpeed", 3.5f },

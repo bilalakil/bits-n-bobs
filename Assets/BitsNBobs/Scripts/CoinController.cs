@@ -8,6 +8,7 @@ namespace BitsNBobs
         public static CoinController I { get; private set; }
 
         public event Action OnCoinAmountChanged;
+        public string initialCoinAmountKey;
 
         int _coinAmount;
 
@@ -22,6 +23,11 @@ namespace BitsNBobs
                 _coinAmount = value;
                 OnCoinAmountChanged?.Invoke();
             }
+        }
+
+        public void Awake()
+        {
+            _coinAmount = Config.Get<int>(initialCoinAmountKey);
         }
         
         public void OnEnable()
