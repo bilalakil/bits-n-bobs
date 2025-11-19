@@ -5,21 +5,28 @@ namespace BitsNBobs
 {
     public static class Config
     {
+        public const int BASE_PLAYER_COINS = 50;
+        
+        public const int BASE_ENEMY_SPAWNER_UPGRADE_COST = 10;
+        public const int ENEMY_SPAWNER_UPGRADE_COST_ADDITION = 5;
+        public const int BASE_ENEMY_SPAWNER_SPAWNS_PER_SECOND = 0;
+        public const float ENEMY_SPAWNER_SPAWNS_PER_SECOND_GAIN = .25f;
+        
         public const float MOVE_SPEED_CAP = 10f;
         public const float TARGET_RANGE_CAP = 20f;
         public const float PROJECTILE_SPEED_SPEED_CAP = 20f;
         
         const int BASE_ENEMY_COINS_DROPPED = 5;
         const int BASE_ENEMY_HEALTH = 100;
-        const float BASE_ENEMY_ATTACK_SPEED = 1f;
         const int BASE_ENEMY_DAMAGE = 10;
+        const float BASE_ENEMY_ATTACK_SPEED = 1f;
         const float BASE_ENEMY_MOVEMENT_SPEED = 2.5f;
 
         const int BASE_ITEM_COST = 50;
         const int BASE_ITEM_HEALTH = 20;
+        const int BASE_ITEM_DAMAGE = 6;
         const float BASE_ITEM_HEALTH_REGENERATION = .2f;
         const float BASE_ITEM_MOVEMENT_SPEED = .25f;
-        const int BASE_ITEM_DAMAGE = 6;
         const float BASE_ITEM_ATTACK_SPEED = .025f;
         const float BASE_ITEM_ATTACK_RANGE = 1f;
         const float BASE_ITEM_PROJECTILE_SPEED = 1.5f;
@@ -33,8 +40,8 @@ namespace BitsNBobs
             { "Player.ProjectileAttack.BaseTargetRange", 6f },
             { "Player_Projectile.BaseDamage", 25 },
             { "Player_Projectile.MovementSpeed", 8f },
-
-
+            
+            
             { "Enemy_Slime_Basic.DeathCoinAmount", BASE_ENEMY_COINS_DROPPED },
             { "Enemy_Slime_Basic.InitialMaxHealth", BASE_ENEMY_HEALTH },
             { "Enemy_Slime_Basic.MeleeAttack.BaseCooldownSeconds", BASE_ENEMY_ATTACK_SPEED },
@@ -43,30 +50,30 @@ namespace BitsNBobs
 
             { "Enemy_Slime_Fast.DeathCoinAmount", BASE_ENEMY_COINS_DROPPED*2 },
             { "Enemy_Slime_Fast.InitialMaxHealth", BASE_ENEMY_HEALTH },
-            { "Enemy_Slime_Fast.MeleeAttack.BaseCooldownSeconds", BASE_ENEMY_ATTACK_SPEED },
+            { "Enemy_Slime_Fast.MeleeAttack.BaseCooldownSeconds", BASE_ENEMY_ATTACK_SPEED/8 },
             { "Enemy_Slime_Fast.MeleeAttack.BaseDamage", BASE_ENEMY_DAMAGE },
-            { "Enemy_Slime_Fast.MovementSpeed", BASE_ENEMY_MOVEMENT_SPEED*2 },
+            { "Enemy_Slime_Fast.MovementSpeed", BASE_ENEMY_MOVEMENT_SPEED*4 },
 
             { "Enemy_Slime_MoreDamage.DeathCoinAmount", BASE_ENEMY_COINS_DROPPED*2 },
             { "Enemy_Slime_MoreDamage.InitialMaxHealth", BASE_ENEMY_HEALTH },
             { "Enemy_Slime_MoreDamage.MeleeAttack.BaseCooldownSeconds", BASE_ENEMY_ATTACK_SPEED },
             { "Enemy_Slime_MoreDamage.MeleeAttack.BaseDamage", BASE_ENEMY_DAMAGE*2 },
-            { "Enemy_Slime_MoreDamage.MovementSpeed", BASE_ENEMY_MOVEMENT_SPEED },
+            { "Enemy_Slime_MoreDamage.MovementSpeed", BASE_ENEMY_MOVEMENT_SPEED*1.5 },
 
             { "Enemy_Slime_Tanky.DeathCoinAmount", BASE_ENEMY_COINS_DROPPED*2 },
             { "Enemy_Slime_Tanky.InitialMaxHealth", BASE_ENEMY_HEALTH*2 },
             { "Enemy_Slime_Tanky.MeleeAttack.BaseCooldownSeconds", BASE_ENEMY_ATTACK_SPEED },
             { "Enemy_Slime_Tanky.MeleeAttack.BaseDamage", BASE_ENEMY_DAMAGE },
-            { "Enemy_Slime_Tanky.MovementSpeed", BASE_ENEMY_MOVEMENT_SPEED },
-
+            { "Enemy_Slime_Tanky.MovementSpeed", BASE_ENEMY_MOVEMENT_SPEED/2 },
+            
             { "Enemy_Bat_Basic.DeathCoinAmount", BASE_ENEMY_COINS_DROPPED },
             { "Enemy_Bat_Basic.InitialMaxHealth", BASE_ENEMY_HEALTH/2 },
-            { "Enemy_Bat_Basic.MeleeAttack.BaseCooldownSeconds", BASE_ENEMY_ATTACK_SPEED/8 },
+            { "Enemy_Bat_Basic.MeleeAttack.BaseCooldownSeconds", BASE_ENEMY_ATTACK_SPEED/4 },
             { "Enemy_Bat_Basic.MeleeAttack.BaseDamage", BASE_ENEMY_DAMAGE },
             { "Enemy_Bat_Basic.MovementSpeed", BASE_ENEMY_MOVEMENT_SPEED*3 },
 
-            { "Enemy_Snail_Basic.DeathCoinAmount", BASE_ENEMY_COINS_DROPPED*4 },
-            { "Enemy_Snail_Basic.InitialMaxHealth", BASE_ENEMY_HEALTH*10 },
+            { "Enemy_Snail_Basic.DeathCoinAmount", BASE_ENEMY_COINS_DROPPED*5 },
+            { "Enemy_Snail_Basic.InitialMaxHealth", BASE_ENEMY_HEALTH*7 },
             { "Enemy_Snail_Basic.MeleeAttack.BaseCooldownSeconds", BASE_ENEMY_ATTACK_SPEED/4 },
             { "Enemy_Snail_Basic.MeleeAttack.BaseDamage", BASE_ENEMY_DAMAGE/2 },
             { "Enemy_Snail_Basic.MovementSpeed", BASE_ENEMY_MOVEMENT_SPEED/4 },
@@ -112,33 +119,33 @@ namespace BitsNBobs
             { "Item_EyePiece.Stats.MaxHealth", -BASE_ITEM_HEALTH*3 },
 
             { "Item_MedievalArmour.Cost", BASE_ITEM_COST*2 },
-            { "Item_MedievalArmour.Stats.MaxHealth", BASE_ITEM_HEALTH*5 },
+            { "Item_MedievalArmour.Stats.MaxHealth", BASE_ITEM_HEALTH*3 },
             { "Item_MedievalArmour.Stats.BaseHealthRegenerationPerSecond", BASE_ITEM_HEALTH_REGENERATION/2 },
-            { "Item_MedievalArmour.Stats.MovementSpeed", -BASE_ITEM_MOVEMENT_SPEED*10 },
+            { "Item_MedievalArmour.Stats.MovementSpeed", -BASE_ITEM_MOVEMENT_SPEED*5 },
 
             { "Item_LightningShoes.Cost", BASE_ITEM_COST*2 },
-            { "Item_LightningShoes.Stats.MovementSpeed", BASE_ITEM_MOVEMENT_SPEED*10 },
-            { "Item_LightningShoes.Stats.BaseTargetRange", -BASE_ITEM_ATTACK_RANGE*3 },
+            { "Item_LightningShoes.Stats.MovementSpeed", BASE_ITEM_MOVEMENT_SPEED*5 },
+            { "Item_LightningShoes.Stats.BaseTargetRange", -BASE_ITEM_ATTACK_RANGE*1 },
 
-            { "Item_GoldCrown.Cost", -BASE_ITEM_COST },
+            { "Item_GoldCrown.Cost", -BASE_ITEM_COST/2 },
 
-            { "Item_DamageAmulet.Cost", BASE_ITEM_COST-BASE_ITEM_COST },
+            { "Item_DamageAmulet.Cost", BASE_ITEM_COST*.1 },
             { "Item_DamageAmulet.Stats.BaseDamage", BASE_ITEM_DAMAGE/2 },
 
-            { "Item_HealthAmulet.Cost", BASE_ITEM_COST-BASE_ITEM_COST },
+            { "Item_HealthAmulet.Cost", BASE_ITEM_COST*.1 },
             { "Item_HealthAmulet.Stats.MaxHealth", BASE_ITEM_HEALTH/2 },
 
-            { "Item_SpeedAmulet.Cost", BASE_ITEM_COST-BASE_ITEM_COST },
+            { "Item_SpeedAmulet.Cost", BASE_ITEM_COST*.1 },
             { "Item_SpeedAmulet.Stats.MovementSpeed", BASE_ITEM_MOVEMENT_SPEED },
 
 
             { "Wave.End.TimeSeconds", 600 },
-            { "Wave.End.SpawnCounts.Enemy_Slime_Basic", 100 },
-            { "Wave.End.SpawnCounts.Enemy_Slime_Fast", 15 },
-            { "Wave.End.SpawnCounts.Enemy_Slime_MoreDamage", 15 },
-            { "Wave.End.SpawnCounts.Enemy_Slime_Tanky", 15 },
-            { "Wave.End.SpawnCounts.Enemy_Bat_Basic", 15 },
-            { "Wave.End.SpawnCounts.Enemy_Snail_Basic", 15 },
+            { "Wave.End.SpawnCounts.Enemy_Slime_Basic", 0 },
+            { "Wave.End.SpawnCounts.Enemy_Slime_Fast", 0 },
+            { "Wave.End.SpawnCounts.Enemy_Slime_MoreDamage", 0 },
+            { "Wave.End.SpawnCounts.Enemy_Slime_Tanky", 0 },
+            { "Wave.End.SpawnCounts.Enemy_Bat_Basic", 0 },
+            { "Wave.End.SpawnCounts.Enemy_Snail_Basic", 0 },
         };
         public static IReadOnlyCollection<string> DataKeys => Data.Keys;
         
