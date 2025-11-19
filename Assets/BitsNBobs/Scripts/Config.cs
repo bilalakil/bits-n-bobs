@@ -78,6 +78,12 @@ namespace BitsNBobs
             { "Enemy_Snail_Basic.MeleeAttack.BaseCooldownSeconds", BASE_ENEMY_ATTACK_SPEED/4 },
             { "Enemy_Snail_Basic.MeleeAttack.BaseDamage", BASE_ENEMY_DAMAGE/2 },
             { "Enemy_Snail_Basic.MovementSpeed", BASE_ENEMY_MOVEMENT_SPEED/4 },
+            
+            { "Enemy_FlyingThing_Basic.DeathCoinAmount", BASE_ENEMY_COINS_DROPPED*3 },
+            { "Enemy_FlyingThing_Basic.InitialMaxHealth", BASE_ENEMY_HEALTH*3 },
+            { "Enemy_FlyingThing_Basic.MeleeAttack.BaseCooldownSeconds", BASE_ENEMY_ATTACK_SPEED*2 },
+            { "Enemy_FlyingThing_Basic.MeleeAttack.BaseDamage", BASE_ENEMY_DAMAGE*2 },
+            { "Enemy_FlyingThing_Basic.MovementSpeed", BASE_ENEMY_MOVEMENT_SPEED/1.5f },
 
 
             { "Shop.RefreshCost", BASE_ITEM_COST/5 },
@@ -130,14 +136,21 @@ namespace BitsNBobs
 
             { "Item_GoldCrown.Cost", -BASE_ITEM_COST/2 },
 
-            { "Item_DamageAmulet.Cost", BASE_ITEM_COST*.1f },
+            { "Item_DamageAmulet.Cost", BASE_ITEM_COST/10 },
             { "Item_DamageAmulet.Stats.BaseDamage", BASE_ITEM_DAMAGE/2 },
 
-            { "Item_HealthAmulet.Cost", BASE_ITEM_COST*.1f },
+            { "Item_HealthAmulet.Cost", BASE_ITEM_COST/10 },
             { "Item_HealthAmulet.Stats.MaxHealth", BASE_ITEM_HEALTH/2 },
 
-            { "Item_SpeedAmulet.Cost", BASE_ITEM_COST*.1f },
+            { "Item_SpeedAmulet.Cost", BASE_ITEM_COST/10 },
             { "Item_SpeedAmulet.Stats.MovementSpeed", BASE_ITEM_MOVEMENT_SPEED },
+            
+            { "Item_Feather.Cost", (int)(BASE_ITEM_COST*1.5f) },
+            { "Item_Feather.Stats.AttackSpeed", BASE_ITEM_ATTACK_SPEED*2 },
+            { "Item_Feather.Stats.MovementSpeed", BASE_ITEM_MOVEMENT_SPEED*2 },
+
+            { "Item_PossessedStar.Cost", (int)(BASE_ITEM_COST*1.5f) },
+            { "Item_PossessedStar.Stats.BaseDamage", (int)(BASE_ITEM_DAMAGE*2.25f) },
 
 
             { "Wave.End.TimeSeconds", 600 },
@@ -173,7 +186,20 @@ namespace BitsNBobs
         public static bool TryGet<T>(string key, out T value)
         {
             var exists = Data.TryGetValue(key, out var valueObj);
+#if UNITY_EDITOR
+            try
+            {
+                value = exists ? (T)valueObj : default;
+            }
+            catch (InvalidCastException)
+            {
+                UnityEngine.Debug.LogError(
+                    $"Config key '{key}' (of type {valueObj?.GetType()}) does not match requested type {typeof(T)}).");
+                throw;
+            }
+#else
             value = exists ? (T)valueObj : default;
+#endif
             return exists;
         }
     }

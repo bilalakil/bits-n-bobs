@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: BitsNBobs::BitsNBobs.Data.EnemyLibrary
   enemyPrefabs:
   - {fileID: 6788510164101919230, guid: a6bd05fceec448244affbd1cf0a4ce28, type: 3}
+  - {fileID: 6788510164101919230, guid: 1da382a517fe7b146be33ec1acb0d512, type: 3}
   - {fileID: 6788510164101919230, guid: ed8919663ecbe3249bf26163424942d0, type: 3}
   - {fileID: 6788510164101919230, guid: 2e2cea3f065411b47ace7311cf22c3e7, type: 3}
   - {fileID: 6788510164101919230, guid: f4d05550a6c74cf45a22158401b156a6, type: 3}

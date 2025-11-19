@@ -74,23 +74,23 @@ MonoBehaviour:
     cost: 100
     intStatKeys:
     - MaxHealth
-    intStatValues: 64000000
+    intStatValues: 3c000000
     floatStatKeys:
     - BaseHealthRegenerationPerSecond
     - MovementSpeed
     floatStatValues:
     - 0.1
-    - -2.5
+    - -1.25
   - key: Item_GoldCrown
     icon: {fileID: 21300000, guid: 5b77912d677a50a4d977995203f49a87, type: 3}
-    cost: -50
+    cost: -25
     intStatKeys: []
     intStatValues: 
     floatStatKeys: []
     floatStatValues: []
   - key: Item_DamageAmulet
     icon: {fileID: 21300000, guid: b01c30814d744204a9a2695dffb5b283, type: 3}
-    cost: 0
+    cost: 5
     intStatKeys:
     - BaseDamage
     intStatValues: 03000000
@@ -98,7 +98,7 @@ MonoBehaviour:
     floatStatValues: []
   - key: Item_HealthAmulet
     icon: {fileID: 21300000, guid: c673306c3dfd2dd41bfe29ad35472771, type: 3}
-    cost: 0
+    cost: 5
     intStatKeys:
     - MaxHealth
     intStatValues: 0a000000
@@ -106,10 +106,29 @@ MonoBehaviour:
     floatStatValues: []
   - key: Item_SpeedAmulet
     icon: {fileID: 21300000, guid: 2c354457b8ea00e4b88909878675c3f8, type: 3}
-    cost: 0
+    cost: 5
     intStatKeys: []
     intStatValues: 
     floatStatKeys:
     - MovementSpeed
     floatStatValues:
     - 0.25
+  - key: Item_Feather
+    icon: {fileID: 21300000, guid: 30f9783b2a4208049b336901a7031a7e, type: 3}
+    cost: 75
+    intStatKeys: []
+    intStatValues: 
+    floatStatKeys:
+    - AttackSpeed
+    - MovementSpeed
+    floatStatValues:
+    - 0.05
+    - 0.5
+  - key: Item_PossessedStar
+    icon: {fileID: 21300000, guid: ec5128bb45501444aaf559ed8ce8709e, type: 3}
+    cost: 75
+    intStatKeys:
+    - BaseDamage
+    intStatValues: 0d000000
+    floatStatKeys: []
+    floatStatValues: []
