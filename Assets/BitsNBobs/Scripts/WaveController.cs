@@ -26,9 +26,9 @@ namespace BitsNBobs
 
         static IEnumerator StartSpawning(Wave wave)
         {
-            for (var enemyTypeI = 0; enemyTypeI < wave.EnemyPrefabs.Count; ++enemyTypeI)
+            for (var enemyTypeI = 0; enemyTypeI < wave.EnemyKeys.Count; ++enemyTypeI)
             {
-                var enemyPrefab = wave.EnemyPrefabs[enemyTypeI];
+                var enemyPrefab = wave.EnemyKeys[enemyTypeI];
                 var totalCount = wave.EnemyCounts[enemyTypeI];
                 for (var enemyCountI = 0; enemyCountI < totalCount; ++enemyCountI)
                 {

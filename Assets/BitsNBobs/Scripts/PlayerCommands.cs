@@ -4,21 +4,21 @@ namespace BitsNBobs
 {
     public static class PlayerCommands
     {
-        public static void SpawnEnemy(GameObject prefab)
+        public static void UpgradeEnemySpawner(string enemyKey)
         {
-            if (!prefab)
-            {
-                Debug.LogError($"[{nameof(SpawnEnemy)}]: Prefab is null!");
-                return;
-            }
-
             if (!EnemySpawnController.I)
             {
-                Debug.LogError($"[{nameof(SpawnEnemy)}]: No {nameof(EnemySpawnController)}!");
+                Debug.LogError($"[{nameof(UpgradeEnemySpawner)}]: No {nameof(EnemySpawnController)}!");
+                return;
+            }
+            
+            if (!EnemySpawnController.I.EnemyLibrary.EnemyPrefabsByKey.ContainsKey(enemyKey))
+            {
+                Debug.LogError($"[{nameof(UpgradeEnemySpawner)}]: Invalid enemy key!");
                 return;
             }
 
-            EnemySpawnController.I.Spawn(prefab);
+            EnemySpawnController.I.TryUpgradeSpawner(enemyKey);
         }
 
         public static void TryBuyItem(int index)

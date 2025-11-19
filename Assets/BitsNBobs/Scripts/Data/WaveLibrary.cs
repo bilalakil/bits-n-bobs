@@ -80,18 +80,18 @@ namespace BitsNBobs.Data
                 hasError = true;
             }
 
-            if (!TryGetEnemySpawns(waveName, out var enemyPrefabs, out var enemyCounts))
+            if (!TryGetEnemySpawns(waveName, out var enemyKeys, out var enemyCounts))
             {
                 // Logs its own errors...
                 hasError = true;
             }
-            else if (enemyPrefabs.Count == 0)
+            else if (enemyKeys.Count == 0)
             {
                 Debug.LogError($"{LOG_PREFIX} {waveName} has no specified enemies!");
                 hasError = true;
             }
 
-            wave = hasError ? null : new Wave(timeSeconds, enemyPrefabs, enemyCounts);
+            wave = hasError ? null : new Wave(timeSeconds, enemyKeys, enemyCounts);
             return !hasError;
         }
 
@@ -101,9 +101,9 @@ namespace BitsNBobs.Data
             return Config.TryGet(configKey, out timeSeconds);
         }
 
-        bool TryGetEnemySpawns(string waveName, out List<GameObject> enemyPrefabs, out List<int> enemyCounts)
+        bool TryGetEnemySpawns(string waveName, out List<string> enemyKeys, out List<int> enemyCounts)
         {
-            enemyPrefabs = new List<GameObject>();
+            enemyKeys = new List<string>();
             enemyCounts = new List<int>();
 
             if (!_configNames.SpawnableEnemyNamesByWaveName.ContainsKey(waveName))
@@ -115,7 +115,7 @@ namespace BitsNBobs.Data
             var hasError = false;
             foreach (var enemyKey in _configNames.SpawnableEnemyNamesByWaveName[waveName])
             {
-                if (!enemyLibrary.EnemyPrefabsByKey.TryGetValue(enemyKey, out var enemyPrefab))
+                if (!enemyLibrary.EnemyPrefabsByKey.TryGetValue(enemyKey, out _))
                 {
                     Debug.LogError($"{LOG_PREFIX} {waveName} contains non-existent enemy: {enemyKey}");
                     hasError = true;
@@ -135,7 +135,7 @@ namespace BitsNBobs.Data
                 if (spawnCount == 0)
                     continue;
                 
-                enemyPrefabs.Add(enemyPrefab);
+                enemyKeys.Add(enemyKey);
                 enemyCounts.Add(spawnCount);
             }
 

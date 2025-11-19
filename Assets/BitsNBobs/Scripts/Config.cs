@@ -59,7 +59,7 @@ namespace BitsNBobs
             { "Enemy_Slime_MoreDamage.InitialMaxHealth", BASE_ENEMY_HEALTH },
             { "Enemy_Slime_MoreDamage.MeleeAttack.BaseCooldownSeconds", BASE_ENEMY_ATTACK_SPEED },
             { "Enemy_Slime_MoreDamage.MeleeAttack.BaseDamage", BASE_ENEMY_DAMAGE*2 },
-            { "Enemy_Slime_MoreDamage.MovementSpeed", BASE_ENEMY_MOVEMENT_SPEED*1.5 },
+            { "Enemy_Slime_MoreDamage.MovementSpeed", BASE_ENEMY_MOVEMENT_SPEED*1.5f },
 
             { "Enemy_Slime_Tanky.DeathCoinAmount", BASE_ENEMY_COINS_DROPPED*2 },
             { "Enemy_Slime_Tanky.InitialMaxHealth", BASE_ENEMY_HEALTH*2 },
@@ -87,7 +87,7 @@ namespace BitsNBobs
 
             { "Item_Helmet.Cost", BASE_ITEM_COST },
             { "Item_Helmet.Stats.MaxHealth", BASE_ITEM_HEALTH*2 },
-            { "Item_Helmet.Stats.BaseTargetRange", -BASE_ITEM_ATTACK_RANGE*1.5 },
+            { "Item_Helmet.Stats.BaseTargetRange", -BASE_ITEM_ATTACK_RANGE*1.5f },
 
             { "Item_Armour.Cost", BASE_ITEM_COST },
             { "Item_Armour.Stats.MaxHealth", BASE_ITEM_HEALTH/2 },
@@ -130,13 +130,13 @@ namespace BitsNBobs
 
             { "Item_GoldCrown.Cost", -BASE_ITEM_COST/2 },
 
-            { "Item_DamageAmulet.Cost", BASE_ITEM_COST*.1 },
+            { "Item_DamageAmulet.Cost", BASE_ITEM_COST*.1f },
             { "Item_DamageAmulet.Stats.BaseDamage", BASE_ITEM_DAMAGE/2 },
 
-            { "Item_HealthAmulet.Cost", BASE_ITEM_COST*.1 },
+            { "Item_HealthAmulet.Cost", BASE_ITEM_COST*.1f },
             { "Item_HealthAmulet.Stats.MaxHealth", BASE_ITEM_HEALTH/2 },
 
-            { "Item_SpeedAmulet.Cost", BASE_ITEM_COST*.1 },
+            { "Item_SpeedAmulet.Cost", BASE_ITEM_COST*.1f },
             { "Item_SpeedAmulet.Stats.MovementSpeed", BASE_ITEM_MOVEMENT_SPEED },
 
 

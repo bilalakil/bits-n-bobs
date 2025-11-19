@@ -10,8 +10,6 @@ namespace BitsNBobs.UI.Text
         TextMeshProUGUI _text;
         string _stringFormat;
 
-        bool _started;
-
         public void Awake()
         {
             _itemButton = GetComponentInParent<ItemButton>();

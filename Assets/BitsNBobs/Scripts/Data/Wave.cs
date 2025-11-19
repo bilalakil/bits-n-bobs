@@ -10,16 +10,16 @@ namespace BitsNBobs.Data
         [SerializeField] int timeSeconds;
         public int TimeSeconds => timeSeconds;
 
-        [SerializeField] List<GameObject> enemyPrefabs;
-        public IReadOnlyList<GameObject> EnemyPrefabs => enemyPrefabs;
+        [SerializeField] List<string> enemyKeys;
+        public IReadOnlyList<string> EnemyKeys => enemyKeys;
 
         [SerializeField] List<int> enemyCounts;
         public IReadOnlyList<int> EnemyCounts => enemyCounts;
 
-        public Wave(int timeSeconds, List<GameObject> enemyPrefabs, List<int> enemyCounts)
+        public Wave(int timeSeconds, List<string> enemyKeys, List<int> enemyCounts)
         {
             this.timeSeconds = timeSeconds;
-            this.enemyPrefabs = enemyPrefabs;
+            this.enemyKeys = enemyKeys;
             this.enemyCounts = enemyCounts;
         }
     }

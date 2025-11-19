@@ -3,32 +3,47 @@ using UnityEngine;
 
 namespace BitsNBobs
 {
-    public class EnemySpawner : MonoBehaviour
+    public class EnemySpawner
     {
-        public GameObject prefab;
-        public float intervalSeconds;
-        public int count;
+        public int UpgradeCost { get; private set; }
+        public float NextSpawnPct { get; private set; }
+        public event Action OnUpgraded;
 
-        EnemySpawnController _enemySpawnController;
-        float _nextSpawnTime;
+        readonly EnemySpawnController _controller;
+        readonly string _enemyKey;
 
-        public void Awake()
+        float _numSpawnsPerSecond;
+        
+        public EnemySpawner(EnemySpawnController controller, string enemyKey)
         {
-            _enemySpawnController = GetComponentInParent<EnemySpawnController>();
-        }
+            _controller = controller;
+            _enemyKey = enemyKey;
 
-        public void OnEnable()
-        {
-            _nextSpawnTime = Time.time + intervalSeconds;
+            UpgradeCost = Config.BASE_ENEMY_SPAWNER_UPGRADE_COST;
+            _numSpawnsPerSecond = Config.BASE_ENEMY_SPAWNER_SPAWNS_PER_SECOND;
         }
 
         public void Update()
         {
-            if (Time.time < _nextSpawnTime)
-                return;
-            _nextSpawnTime = Time.time + intervalSeconds;
-            for (var i = 0; i < count; ++i)
-                _enemySpawnController.Spawn(prefab);
+            if (_numSpawnsPerSecond <= 0) return;
+            NextSpawnPct += _numSpawnsPerSecond * Time.deltaTime;
+            if (NextSpawnPct < 1) return;
+            NextSpawnPct = 0;
+            _controller.Spawn(_enemyKey);
+        }
+
+        public bool TryUpgrade()
+        {
+            if (!CoinController.I) return false;
+            if (CoinController.I.CoinAmount < UpgradeCost) return false;
+
+            CoinController.I.CoinAmount -= UpgradeCost;
+            
+            UpgradeCost += Config.ENEMY_SPAWNER_UPGRADE_COST_ADDITION;
+            _numSpawnsPerSecond += Config.ENEMY_SPAWNER_SPAWNS_PER_SECOND_GAIN;
+            OnUpgraded?.Invoke();
+            
+            return true;
         }
     }
 }
